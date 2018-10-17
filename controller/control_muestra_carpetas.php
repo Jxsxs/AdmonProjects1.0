@@ -34,23 +34,23 @@ if ($_SESSION["id_usuario"]) {
 
                     $result_query_objetivos = pg_query($conn, $query_total_objetivos);
                     $result_query_objetivos = pg_query($conn, $query_objetivos);
-                    $objetivos_numero = pg_fetch_array($result_query_objetivos);
+                    $objetivos_numero = pg_fetch_all($result_query_objetivos);
                     $total_objetivos = $objetivos_numero[0];
 
                     $desc_objetivos [] = array();
                     $cont = 0;
                     while ($objetivos = pg_fetch_array($result_query_objetivos)) {
                         $desc_objetivos[$cont] = $objetivos[0];
+                        // echo $desc_objetivos[$cont]. "<br>";
                         $cont += 1;
                     }
 
-                    $objetivosCadena = '"' . json_encode($desc_objetivos,JSON_HEX_QUOT | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS) . '"';
-
                     echo "<li>";
-                    echo    "<a href='javascript:verDatosProyecto(" . $id_proyecto . "," . $nuevoNombre . "," . $cont .  "," . $objetivosCadena . ")'>";
+                    echo    "<a href='javascript:verDatosProyecto(" . $id_proyecto . "," . $nuevoNombre . "," . $cont .  "," . json_encode($desc_objetivos) . ")'>";
                     echo      "{$nombre_proyecto}
                             </a>
                           </li>";
+                    unset($desc_objetivos);
                 }
             }
             echo '</ul>';
