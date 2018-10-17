@@ -1,0 +1,48 @@
+.oculto{
+    display: none;
+}
+progress {
+    text-align: center;
+}
+progress:after {
+    content: attr(value)'%';
+}
+
+#tablaGeneral {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    /*background: gray;*/
+}
+
+#tablaGeneral td, #tablaGeneral th {
+    border: 1px solid gray;
+    padding: 8px;
+}
+
+/*#tablaGeneral tr:nth-child(even){background-color: gray;}*/
+
+#tablaGeneral tr:hover {
+    background-color: #5b5b5b;
+    color:white;
+}
+
+#tablaGeneral td {
+    text-align: justify;
+}
+
+#alignTD{
+    text-align: center;
+}
+
+.selected{
+    cursor: pointer;
+}
+.seleccionada{
+    background-color: #5b5b5b;
+    color:white;
+}
+
+.resaltar{
+    background-color: yellow;
+}

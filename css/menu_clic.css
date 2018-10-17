@@ -1,0 +1,21 @@
+#menu ul{
+      list-style: none;
+      list-style-type: none;
+      list-style-position: outside;
+}
+ 
+#menu li{
+      line-height: 30px;
+      font-size: 16px;
+      cursor:pointer;
+}
+ 
+#menu div{
+      width:250px;
+      position:absolute;      
+      border:1px solid black;
+       
+      -moz-box-shadow: 0 0 5px #888;
+      -webkit-box-shadow: 0 0 5px#888;
+      box-shadow: 0 0 5px #888;
+}
