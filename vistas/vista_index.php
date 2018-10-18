@@ -56,7 +56,7 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="nav navbar-nav ml-auto">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="#" onclick="editable()">Nuevo Proyecto</a>
+                                    <a class="nav-link" href="#" onclick="habilitaEdicionProyecto()">Nuevo Proyecto</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="modal" href="#nuevaCarpeta">Nueva Carpeta</a>
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                 </nav>
-                <div id="contentAll" style="display: none;">
+                <div id="contentAll" style="">
                     <div class="row ml-auto" id="creaNombre">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -92,15 +92,15 @@
                             Nuevo Objetivo
                         </a>
                     </div>
-                    <div class="row ml-auto">
-                        <div class="col-md-6">
+                    <div class="row ml-auto" id="contAlcance">
+                        <!-- <div class="col-md-6">
                             <div class="form-group">
                                 <div class="input-group">
                                     <input class="form-control" id="name" name="txtAlcance" placeholder="Alcance" required="true" type="text" disabled="true">
                                     </input>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="row flex-column align-content-center">
                         <a href="#" id="generaAlcance">
