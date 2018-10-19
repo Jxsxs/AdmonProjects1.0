@@ -65,15 +65,33 @@ if ($_SESSION["id_usuario"]) {
                         $cont_alcance += 1;
                     }
                     // =================================================================
+                    // ========================RESTRICCIONES============================
+                    $query_total_res = "select COUNT(plan_proyecto.id_pp) as restricciones from plan_proyecto join restricciones on restricciones.id_pp_fk = plan_proyecto.id_pp where plan_proyecto.id_pp=" . $id_proyecto;
+                    $query_restricciones = "select restricciones.desc_restriccion from restricciones join plan_proyecto on restricciones.id_pp_fk = plan_proyecto.id_pp where plan_proyecto.id_pp=".$id_proyecto;
+
+                    $result_query_res_total = pg_query($conn, $query_total_res);
+                    $result_query_res = pg_query($conn,$query_restricciones);
+                    $res_numero = pg_fetch_all($result_query_res_total);
+                    $desc_res [] = array();
+                    $cont_res = 0;
+                    while ($restricciones = pg_fetch_array($result_query_res)) {
+                         $desc_res[$cont_res] = $restricciones[0];
+                         $cont_res += 1;
+                     } 
+
+
+                    // ===================================================================
 
                     echo "<li>";
-                    echo    "<a href='javascript:verDatosProyecto(" . $id_proyecto . "," . $nuevoNombre . "," . $cont_objetivo .  "," . json_encode($desc_objetivos) . "," . $cont_alcance . "," . json_encode($desc_alcances) . ")'>";
+                    echo    "<a href='javascript:verDatosProyecto(" . $id_proyecto . "," . $nuevoNombre . "," . $cont_objetivo .  "," . json_encode($desc_objetivos) . "," . $cont_alcance . "," . json_encode($desc_alcances) . "," . $cont_res . "," . json_encode($desc_res) . ")'>";
                     echo      "{$nombre_proyecto}
                             </a>
                           </li>";
 
                     unset($desc_objetivos);
                     unset($desc_alcances);
+                    unset($desc_res);
+
                 }
             }
             echo '</ul>';

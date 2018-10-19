@@ -29,231 +29,233 @@ and open the template in the editor.
         <!------ Include the above in your HEAD tag ---------->
     </head>
     <body id="LoginForm">
-        <div class="container">
-            <h1 class="form-heading">
-                SA Projects
-            </h1>
-            <div class="login-form">
-                <div class="main-div">
-                    <div class="panel">
-                        <h2>
-                            Ingreso al sistema
-                        </h2>
-                        <p>
-                            Please enter your email and password
-                        </p>
-                    </div>
-                    <form role="form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="">
-                        <div class="form-group ">
-                            <input class="form-control" id="inputEmail" name="txtEmail" placeholder="Email Address" type="email">
-                            </input>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" id="inputPassword" name="txtPass" placeholder="Password" type="password">
-                            </input>
-                        </div>
-                        <div class="forgot">
-                            <a data-toggle="modal" href="#reset">
-                                Forgot password?
-                            </a>
-                        </div>
-                        <button class="btn btn-primary" id="" name="btnEnviar" type="submit">
-                            Login
-                        </button>
-
-                    </form>
-                    <div class="forgot">
-                        No tiene cuenta?
-                        <a data-toggle="modal" href="#registro">
-                            Registrar
-                        </a>
-                    </div>
-                    <?php
-                    include '../controller/control_login.php';
-                    include '../controller/control_registro.php';
-                    ?>
-                </div>
-                <!-- ------############## ventana modal #############------------>
-                <div class="modal fade" id="registro" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button class="close" data-dismiss="modal" type="button">
-                                    ×
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h2>
-                                            New User
-                                        </h2>
-                                        <hr>
-                                        </hr>
-                                    </div>
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-center text-white mb-4">SA Projects</h2>
+                    <div class="row">
+                        <div class="col-md-6 mx-auto">
+                            <div class="card rounded-0">
+                                <div class="card-header">
+                                    <h3 class="mb-0">Login</h3>
                                 </div>
-                                <form role="form" action='<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>' method="post" class="">
-                                    <div class="row">
-                                        <div class="col-md-3 field-label-responsive">
-                                            <label for="name">
-                                                Name
-                                            </label>
+                                <div class="card-body">
+                                    <form role="form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="">
+                                        <div class="form-group ">
+                                            <input class="form-control" id="inputEmail" name="txtEmail" placeholder="Email Address" type="email">
+                                            </input>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                                                    <div class="input-group-addon" style="width: 2.6rem">
-                                                        <i class="fa fa-user">
-                                                        </i>
-                                                    </div>
-                                                    <input class="form-control" id="name" name="txtNombreRegistro" placeholder="Juan Perez" required="true" type="text">
-                                                    </input>
-                                                </div>
-                                            </div>
+                                        <div class="form-group">
+                                            <input class="form-control" id="inputPassword" name="txtPass" placeholder="Password" type="password">
+                                            </input>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-3 field-label-responsive">
-                                            <label for="email">
-                                                E-Mail
-                                            </label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                                                    <div class="input-group-addon" style="width: 2.6rem">
-                                                        <i class="fa fa-at">
-                                                        </i>
-                                                    </div>
-                                                    <input autofocus="" class="form-control" id="email" name="txtEmailRegistro" placeholder="you@example.com" required="true" type="email">
-                                                    </input>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-3 field-label-responsive">
-                                            <label for="password">
-                                                Password
-                                            </label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group has-danger">
-                                                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                                                    <div class="input-group-addon" style="width: 2.6rem">
-                                                        <i class="fa fa-key">
-                                                        </i>
-                                                    </div>
-                                                    <input class="form-control" id="password" name="txtPassRegistro" placeholder="Password" required="true" type="password">
-                                                    </input>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-3 field-label-responsive">
-                                            <label for="password">
-                                                Confirm Password
-                                            </label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                                                    <div class="input-group-addon" style="width: 2.6rem">
-                                                        <i class="fa fa-repeat">
-                                                        </i>
-                                                    </div>
-                                                    <input class="form-control" id="password-confirm" name="txtPassConfRegistro" placeholder="Password" required="true" type="password">
-                                                    </input>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!-- boton que envia el formulario -->
-                                            <button class="btn btn-success" name="btnRegistro" type="submit">
-                                                <i class="fa fa-user-plus">
-                                                </i>
-                                                Register
+                                        <div class="form-group">
+                                             <button class="btn btn-primary float-right" id="" name="btnEnviar" type="submit">
+                                                 Login
                                             </button>
                                         </div>
+                                    </form>
+                                    <div class="forgot">
+                                        <a data-toggle="modal" href="#reset">
+                                            Forgot password?
+                                        </a>
                                     </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-------------###############modal del reset###########---------------------->
-                <div class="modal fade" id="reset" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button class="close" data-dismiss="modal" type="button">
-                                    ×
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="forgot">
+                                        No tiene cuenta?
+                                        <a data-toggle="modal" href="#registro">
+                                            Registrar
+                                        </a>
                                     </div>
-                                    <div class="col-md-6">
-                                        <h2>
-                                            Reset Password
-                                        </h2>
-                                        <hr>
-                                        </hr>
-                                    </div>
+                                    <?php
+                                    include '../controller/control_login.php';
+                                    include '../controller/control_registro.php';
+                                    ?>
                                 </div>
-                                <form role="form" action='<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>' method="post" class="">
-                                    <div class="row">
-                                        <div class="col-md-3 field-label-responsive">
-                                            <label for="email">
-                                                E-Mail
-                                            </label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                                                    <div class="input-group-addon" style="width: 2.6rem">
-                                                        <i class="fa fa-at">
-                                                        </i>
-                                                    </div>
-                                                    <input autofocus="" class="form-control" id="email" name="txtEmailRegistro" placeholder="you@example.com" required="true" type="email">
-                                                    </input>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <!-- boton que envia el formulario -->
-                                            <button class="btn btn-success" name="btnReset" type="submit">
-                                                <i class="fa fa-user-plus">
-                                                </i>
-                                                Send
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
+                                    <!--/card-block-->
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <p class="botto-text">
-                    Copyright Oficial
-                </p>
             </div>
-
+            <!--/row-->
         </div>
+                <!-- ------############## ventana modal #############------------>
+        <div class="modal fade" id="registro" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal" type="button">
+                            ×
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                            </div>
+                            <div class="col-md-6">
+                                <h2>
+                                    New User
+                                </h2>
+                                <hr>
+                                </hr>
+                            </div>
+                        </div>
+                        <form role="form" action='<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>' method="post" class="">
+                            <div class="row">
+                               <!--  <div class="col-md-3 field-label-responsive">
+                                    <label for="name">
+                                        Name
+                                    </label>
+                                </div> -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                            <div class="input-group-addon" style="width: 2.6rem">
+                                                <i class="fa fa-user">
+                                                </i>
+                                            </div>
+                                            <input class="form-control" id="name" name="txtNombreRegistro" placeholder="Juan Perez" required="true" type="text">
+                                            </input>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- <div class="col-md-3 field-label-responsive">
+                                    <label for="email">
+                                        E-Mail
+                                    </label>
+                                </div> -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                            <div class="input-group-addon" style="width: 2.6rem">
+                                                <i class="fa fa-at">
+                                                </i>
+                                            </div>
+                                            <input autofocus="" class="form-control" id="email" name="txtEmailRegistro" placeholder="you@example.com" required="true" type="email">
+                                            </input>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                               <!--  <div class="col-md-3 field-label-responsive">
+                                    <label for="password">
+                                        Password
+                                    </label>
+                                </div> -->
+                                <div class="col-md-6">
+                                    <div class="form-group has-danger">
+                                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                            <div class="input-group-addon" style="width: 2.6rem">
+                                                <i class="fa fa-key">
+                                                </i>
+                                            </div>
+                                            <input class="form-control" id="password" name="txtPassRegistro" placeholder="Password" required="true" type="password">
+                                            </input>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- <div class="col-md-3 field-label-responsive">
+                                    <label for="password">
+                                        Confirm Password
+                                    </label>
+                                </div> -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                            <div class="input-group-addon" style="width: 2.6rem">
+                                                <i class="fa fa-repeat">
+                                                </i>
+                                            </div>
+                                            <input class="form-control" id="password-confirm" name="txtPassConfRegistro" placeholder="Password" required="true" type="password">
+                                            </input>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-6">
+                                    <!-- boton que envia el formulario -->
+                                    <button class="btn btn-success" name="btnRegistro" type="submit">
+                                        <i class="fa fa-user-plus">
+                                        </i>
+                                        Register
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-------------###############modal del reset###########---------------------->
+        <div class="modal fade" id="reset" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal" type="button">
+                            ×
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                            </div>
+                            <div class="col-md-6">
+                                <h2>
+                                    Reset Password
+                                </h2>
+                                <hr>
+                                </hr>
+                            </div>
+                        </div>
+                        <form role="form" action='<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>' method="post" class="">
+                            <div class="row">
+                                <div class="col-md-3 field-label-responsive">
+                                    <label for="email">
+                                        E-Mail
+                                    </label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                            <div class="input-group-addon" style="width: 2.6rem">
+                                                <i class="fa fa-at">
+                                                </i>
+                                            </div>
+                                            <input autofocus="" class="form-control" id="email" name="txtEmailRegistro" placeholder="you@example.com" required="true" type="email">
+                                            </input>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-6">
+                                    <!-- boton que envia el formulario -->
+                                    <button class="btn btn-success" name="btnReset" type="submit">
+                                        <i class="fa fa-user-plus">
+                                        </i>
+                                        Send
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="botto-text">
+            Copyright Oficial
+        </p>
     </body>
 </html>

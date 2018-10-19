@@ -56,7 +56,7 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="nav navbar-nav ml-auto">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="#" onclick="habilitaEdicionProyecto()">Nuevo Proyecto</a>
+                                    <a class="nav-link" href="#" onclick="">Nuevo Proyecto</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="modal" href="#nuevaCarpeta">Nueva Carpeta</a>
@@ -69,14 +69,14 @@
                     </div>
                 </nav>
                 <div id="contentAll" style="">
-                    <div class="row ml-auto" id="creaNombre">
-                        <div class="col-md-6">
+                    <div class="row ml-auto" id="contNombre">
+                        <!-- <div class="col-md-6">
                             <div class="form-group">
                                 <div class="input-group">
                                     <input class="form-control" id="txtNombreProyecto" name="txtNombreProyecto" placeholder="Name" required="true" type="text" disabled="true">
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="row ml-auto" id="contObjetivo">
                         <!-- <div class="col-md-6">
@@ -107,15 +107,15 @@
                             More
                         </a>
                     </div>
-                    <div class="row ml-auto">
-                        <div class="col-md-6">
+                    <div class="row ml-auto" id="contRes">
+                        <!-- <div class="col-md-6">
                             <div class="form-group">
                                 <div class="input-group">
                                     <input class="form-control" id="name" name="txtRestriccion" placeholder="Restriccion" required="true" type="text" disabled="true">
                                     </input>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="row flex-column align-content-center">
                         <a href="#" id="generaRestriccion">
@@ -123,10 +123,21 @@
                         </a>
                     </div>
                     <!-- boton que envia el formulario -->
-                    <div class="row flex-column align-content-center">
-                        <button class="btn btn-success" name="btnGuardaProyecto" type="submit">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-4 col-sm-2">
+                           
+                           <button class="btn btn-success" name="btnEditProyecto" type="submit" onclick="habilitaEdicionProyecto()">
+                            Edit
+                            </button>
+                        </div>
+                        <div class="col-4 col-sm-2">
+                          <form>
+                            <button class="btn btn-success" name="btnGuardaProyecto" type="submit">
                             Save
-                        </button>
+                            </button>
+                        </div>
+                      </div>
                     </div>
                 </div>
             </div>
