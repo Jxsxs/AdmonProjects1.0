@@ -70,61 +70,93 @@
                 </nav>
                 <div id="contentAll" style="">
                     <div class="row ml-auto" id="contNombre">
-                        <!-- <div class="col-md-6">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input class="form-control" id="txtNombreProyecto" name="txtNombreProyecto" placeholder="Name" required="true" type="text" disabled="true">
+                                    Project Name
                                 </div>
+                                
                             </div>
-                        </div> -->
-                    </div>
-                    <div class="row ml-auto" id="contObjetivo">
-                        <!-- <div class="col-md-6">
-                            <div class="form-group" >
+                             <div class="form-group">
                                 <div class="input-group">
-                                    <input class="form-control" name="txtObjetivo' + a +'" placeholder="Objetivo" required="true" type="text" disabled="true"></input>
+                                     <input class="form-control" id="name" name="txtRestriccion" placeholder="Restriccion" required="true" type="text" disabled="true">
+                                    </input>
                                 </div>
                             </div>
-                        </div> -->
+                            <div class="form-group">
+                                <div class="input-group">
+                                     <input class="form-control" id="name" name="txtRestriccion" placeholder="Restriccion" required="true" type="text" disabled="true">
+                                    </input>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row flex-column align-content-center">
+
+                    <div class="row ml-auto" id="contObjetivo">
+                        <div class="col-md-6">
+                            <div class="form-group" >
+                                 <hr style="float: left; width: 200px;">
+                                <div class="input-group">
+                                   <button class="btn btn-primary dropdown-toggle mr-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Objetivos</button>
+                                  <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">1</a>
+                                    <a class="dropdown-item" href="#">2</a>
+                                    <a class="dropdown-item" href="#">3</a>
+                                  </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+               <!--      <div class="row flex-column align-content-center">
                         <a href="#" onclick="creaObjetivo()">
                             Nuevo Objetivo
                         </a>
-                    </div>
+                    </div> -->
                     <div class="row ml-auto" id="contAlcance">
-                        <!-- <div class="col-md-6">
+                        <div class="col-md-6">
                             <div class="form-group">
+                                <hr style="float: left; width: 200px;">
                                 <div class="input-group">
-                                    <input class="form-control" id="name" name="txtAlcance" placeholder="Alcance" required="true" type="text" disabled="true">
-                                    </input>
+                                <button class="btn btn-primary dropdown-toggle mr-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Alcances</button>
+                                  <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">1</a>
+                                    <a class="dropdown-item" href="#">2</a>
+                                    <a class="dropdown-item" href="#">3</a>
+                                  </div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
-                    <div class="row flex-column align-content-center">
+                   <!--  <div class="row flex-column align-content-center">
                         <a href="#" id="generaAlcance">
                             More
                         </a>
-                    </div>
+                    </div> -->
                     <div class="row ml-auto" id="contRes">
-                        <!-- <div class="col-md-6">
+                        <div class="col-md-6">
                             <div class="form-group">
+                                <hr style="float: left; width: 200px;">
                                 <div class="input-group">
-                                    <input class="form-control" id="name" name="txtRestriccion" placeholder="Restriccion" required="true" type="text" disabled="true">
-                                    </input>
+                                <button class="btn btn-primary dropdown-toggle mr-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Restricciones</button>
+                                  <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">1</a>
+                                    <a class="dropdown-item" href="#">2</a>
+                                    <a class="dropdown-item" href="#">3</a>
+                                  </div>
                                 </div>
                             </div>
-                        </div> -->
+                            </div>
+                        </div>
                     </div>
-                    <div class="row flex-column align-content-center">
+                   <!--  <div class="row flex-column align-content-center">
                         <a href="#" id="generaRestriccion">
                             More
                         </a>
-                    </div>
+                    </div> -->
                     <!-- boton que envia el formulario -->
                     <div class="container">
-                      <div class="row">
+                     <!--  <div class="row">
                         <div class="col-4 col-sm-2">
                            
                            <button class="btn btn-success" name="btnEditProyecto" type="submit" onclick="habilitaEdicionProyecto()">
@@ -132,12 +164,11 @@
                             </button>
                         </div>
                         <div class="col-4 col-sm-2">
-                          <form>
                             <button class="btn btn-success" name="btnGuardaProyecto" type="submit">
                             Save
                             </button>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                 </div>
             </div>
@@ -184,8 +215,8 @@
                                     <div class="col-md-6">
                                         <!-- boton que envia el formulario -->
                                         <button class="btn btn-success" name="btnGuardarCarpeta" type="submit">
-<!--                                                <i class="fa fa-user-plus">
-                                            </i>-->
+                                                <i class="fa fa-user-plus">
+                                            </i>
                                             Guardar
                                         </button>
                                     </div>

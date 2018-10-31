@@ -8,6 +8,11 @@ body {
     height:100%;
 }
 
+hr { 
+    float: left;
+    width: 150px;
+} 
+
 p {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
