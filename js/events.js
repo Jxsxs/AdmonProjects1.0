@@ -113,3 +113,26 @@ function creaObjetivo() {
     div.innerHTML = '<div class="col-md-6"><div class="form-group" ><div class="input-group"><input class="form-control" name="txtObjetivo_' + (inputCount + 1) + '" placeholder="Objetivo" required="true" type="text" disabled="true"></input></div></div></div>';
     document.getElementById('contObjetivo').appendChild(div);
 }
+
+// De aqui para adelante es donde se crean los objetos con los selects
+function creaObjetivoSelect(){
+  var divObjetivo = document.getElementById("obj");
+  var n = 0;
+  if (divObjetivo != null) {
+      while (divObjetivo.hasChildNodes()) {
+          divObjetivo.removeChild(divObjetivo.lastChild);
+      }
+  }
+  var valor = $('select[name=selectObjetivos]').val();
+  if (valor!="") {
+    for (var i = 0; i < valor; i++) {
+      var inputCount = document.getElementById('contObjetivo').getElementsByTagName('input').length;
+      // alert(inputCount);
+      var div = document.createElement('div');
+      div.setAttribute('class', 'input-group');
+      div.setAttribute('id', 'obj');
+      div.innerHTML = '<div class="col-md-6"><div class="form-group" ><div class="input-group"><input class="form-control" name="txtObjetivo_' + (inputCount + 1) + '" placeholder="" required="true" type="text"></input></div></div></div>';
+      document.getElementById('contObjetivo').appendChild(div);
+    }
+  }
+}

@@ -41,7 +41,7 @@
             </nav>
 
             <!-- Page Content  -->
-            <div id="content">
+            <div id="content" >
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">
 
@@ -68,25 +68,17 @@
                         </div>
                     </div>
                 </nav>
-                <div id="contentAll" style="">
+                <div id="contentAll"  style="margin:0 auto; width:700px;padding:auto;">
                     <div class="row ml-auto" id="contNombre">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="input-group">
                                     Project Name
                                 </div>
-                                
-                            </div>
-                             <div class="form-group">
+                                <br>
                                 <div class="input-group">
-                                     <input class="form-control" id="name" name="txtRestriccion" placeholder="Restriccion" required="true" type="text" disabled="true">
-                                    </input>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                     <input class="form-control" id="name" name="txtRestriccion" placeholder="Restriccion" required="true" type="text" disabled="true">
-                                    </input>
+                                  <input class="form-control" id="name" name="txtNombreProyecto" placeholder="" required="true" type="text">
+                                  </input>
                                 </div>
                             </div>
                         </div>
@@ -97,14 +89,19 @@
                             <div class="form-group" >
                                  <hr style="float: left; width: 200px;">
                                 <div class="input-group">
-                                   <button class="btn btn-primary dropdown-toggle mr-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Objetivos</button>
-                                  <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">1</a>
-                                    <a class="dropdown-item" href="#">2</a>
-                                    <a class="dropdown-item" href="#">3</a>
-                                  </div>
+                                  Objetivos
                                 </div>
-                               
+                                <br>
+                                <div class="input-group">
+                                  <div class="styled-select blue semi-square">
+                                     <select name="selectObjetivos" onchange="creaObjetivoSelect()">
+                                       <option value="" selected>Objetivos</option>
+                                       <option value="1">1</option>
+                                       <option value="2">2</option>
+                                       <option value="3">3</option>
+                                     </select>
+                                   </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -118,12 +115,18 @@
                             <div class="form-group">
                                 <hr style="float: left; width: 200px;">
                                 <div class="input-group">
-                                <button class="btn btn-primary dropdown-toggle mr-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Alcances</button>
-                                  <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">1</a>
-                                    <a class="dropdown-item" href="#">2</a>
-                                    <a class="dropdown-item" href="#">3</a>
-                                  </div>
+                                  Alcances
+                                </div>
+                                <br>
+                                <div class="input-group">
+                                  <div class="styled-select blue semi-square">
+                                     <select>
+                                       <option value="" selected>Alcances</option>
+                                       <option value="uno">1</option>
+                                       <option value="dos">2</option>
+                                       <option value="tres">3</option>
+                                     </select>
+                                   </div>
                                 </div>
                             </div>
                         </div>
@@ -138,15 +141,31 @@
                             <div class="form-group">
                                 <hr style="float: left; width: 200px;">
                                 <div class="input-group">
-                                <button class="btn btn-primary dropdown-toggle mr-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Restricciones</button>
-                                  <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">1</a>
-                                    <a class="dropdown-item" href="#">2</a>
-                                    <a class="dropdown-item" href="#">3</a>
-                                  </div>
+                                  Restricciones
+                                </div>
+                                <br>
+                                <div class="input-group">
+                                  <div class="styled-select blue semi-square">
+                                     <select>
+                                       <option value="" selected>Restricciones</option>
+                                       <option value="uno">1</option>
+                                       <option value="dos">2</option>
+                                       <option value="tres">3</option>
+                                     </select>
+                                   </div>
                                 </div>
                             </div>
                             </div>
+                        </div>
+                        <!-- en esta parte va el boton para guardar -->
+                        <div class="row ml-auto align-item-right" style="text-align:right">
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                <button class="btn btn-success" name="btnGuardaProyecto" type="submit">
+                                Save
+                                </button>
+                              </div>
+                          </div>
                         </div>
                     </div>
                    <!--  <div class="row flex-column align-content-center">
@@ -155,10 +174,10 @@
                         </a>
                     </div> -->
                     <!-- boton que envia el formulario -->
-                    <div class="container">
+                    <!-- <div class="container"> -->
                      <!--  <div class="row">
                         <div class="col-4 col-sm-2">
-                           
+
                            <button class="btn btn-success" name="btnEditProyecto" type="submit" onclick="habilitaEdicionProyecto()">
                             Edit
                             </button>
@@ -169,7 +188,7 @@
                             </button>
                         </div>
                       </div> -->
-                    </div>
+                    <!-- </div> -->
                 </div>
             </div>
 
@@ -234,9 +253,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
         <!-- Bootstrap JS -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-         
 
-        
+
+
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#sidebarCollapse').on('click', function () {
