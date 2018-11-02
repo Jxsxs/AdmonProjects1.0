@@ -68,25 +68,25 @@
                         </div>
                     </div>
                 </nav>
-                <div id="contentAll"  style="margin:0 auto; width:700px;padding:auto;">
+                <div id="contentAll"  style="margin:0 auto; width:auto;;padding:auto;">
                     <div class="row ml-auto" id="contNombre">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="input-group">
-                                    Project Name
+                                    <h3>Project Name</h3>
                                 </div>
                                 <br>
                                 <div class="input-group">
-                                  <input class="form-control" id="name" name="txtNombreProyecto" placeholder="" required="true" type="text">
+                                  <input class="form-control" id="name" name="txtNombreProyecto" placeholder="" required="true" type="text" onkeydown="habilita()">
                                   </input>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row ml-auto" id="contObjetivo">
+                    <div class="row ml-auto" >
                         <div class="col-md-6">
-                            <div class="form-group" >
+                            <div class="form-group" id="contObjetivo">
                                  <hr style="float: left; width: 200px;">
                                 <div class="input-group">
                                   Objetivos
@@ -94,7 +94,7 @@
                                 <br>
                                 <div class="input-group">
                                   <div class="styled-select blue semi-square">
-                                     <select name="selectObjetivos" onchange="creaObjetivoSelect()">
+                                     <select name="selectObjetivos" onchange="creaObjetivoSelect(this)" disabled id="idSelectObjetivos">
                                        <option value="" selected>Objetivos</option>
                                        <option value="1">1</option>
                                        <option value="2">2</option>
@@ -102,17 +102,25 @@
                                      </select>
                                    </div>
                                 </div>
+                                <br>
                             </div>
                         </div>
+                    </div>
+                    <div class="row ml-auto align-item-right" style="text-align:right">
+                      <div class="col-md-6">
+                          <div class="form-group">
+                            <a class="nav-link"  onclick="menosObjetivos()" >menos</a>
+                          </div>
+                      </div>
                     </div>
                <!--      <div class="row flex-column align-content-center">
                         <a href="#" onclick="creaObjetivo()">
                             Nuevo Objetivo
                         </a>
                     </div> -->
-                    <div class="row ml-auto" id="contAlcance">
+                    <div class="row ml-auto" >
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group" id="contAlcance">
                                 <hr style="float: left; width: 200px;">
                                 <div class="input-group">
                                   Alcances
@@ -120,25 +128,28 @@
                                 <br>
                                 <div class="input-group">
                                   <div class="styled-select blue semi-square">
-                                     <select>
+                                     <select name="selectAlcances" onchange="creaAlcanceSelect(this)" disabled id="idSelectAlcances">
                                        <option value="" selected>Alcances</option>
-                                       <option value="uno">1</option>
-                                       <option value="dos">2</option>
-                                       <option value="tres">3</option>
+                                       <option value="1">1</option>
+                                       <option value="2">2</option>
+                                       <option value="3">3</option>
                                      </select>
                                    </div>
                                 </div>
+                                <br>
                             </div>
                         </div>
                     </div>
-                   <!--  <div class="row flex-column align-content-center">
-                        <a href="#" id="generaAlcance">
-                            More
-                        </a>
-                    </div> -->
-                    <div class="row ml-auto" id="contRes">
+                    <div class="row ml-auto align-item-right" style="text-align:right">
+                      <div class="col-md-6">
+                          <div class="form-group">
+                            <a class="nav-link"  onclick="menosAlcances(this)" >menos</a>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="row ml-auto">
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group"  id="contRes">
                                 <hr style="float: left; width: 200px;">
                                 <div class="input-group">
                                   Restricciones
@@ -146,16 +157,24 @@
                                 <br>
                                 <div class="input-group">
                                   <div class="styled-select blue semi-square">
-                                     <select>
+                                     <select name="selectRes" onchange="creaResSelect(this)" disabled id="idSelectRes">
                                        <option value="" selected>Restricciones</option>
-                                       <option value="uno">1</option>
-                                       <option value="dos">2</option>
-                                       <option value="tres">3</option>
+                                       <option value="1">1</option>
+                                       <option value="2">2</option>
+                                       <option value="3">3</option>
                                      </select>
                                    </div>
                                 </div>
+                                <br>
                             </div>
-                            </div>
+                          </div>
+                        </div>
+                        <div class="row ml-auto align-item-right" style="text-align:right">
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                <a class="nav-link"  onclick="menosRes()" >menos</a>
+                              </div>
+                          </div>
                         </div>
                         <!-- en esta parte va el boton para guardar -->
                         <div class="row ml-auto align-item-right" style="text-align:right">

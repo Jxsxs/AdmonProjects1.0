@@ -115,24 +115,90 @@ function creaObjetivo() {
 }
 
 // De aqui para adelante es donde se crean los objetos con los selects
-function creaObjetivoSelect(){
-  var divObjetivo = document.getElementById("obj");
-  var n = 0;
-  if (divObjetivo != null) {
-      while (divObjetivo.hasChildNodes()) {
-          divObjetivo.removeChild(divObjetivo.lastChild);
-      }
-  }
-  var valor = $('select[name=selectObjetivos]').val();
-  if (valor!="") {
+// =======================================================================
+function creaObjetivoSelect(val){
+  var div = null, br = null;
+  var valor = val.value;
+  // $('select[name=selectObjetivos]').val;
+  // alert("val: " + valor);
     for (var i = 0; i < valor; i++) {
       var inputCount = document.getElementById('contObjetivo').getElementsByTagName('input').length;
       // alert(inputCount);
-      var div = document.createElement('div');
-      div.setAttribute('class', 'input-group');
-      div.setAttribute('id', 'obj');
-      div.innerHTML = '<div class="col-md-6"><div class="form-group" ><div class="input-group"><input class="form-control" name="txtObjetivo_' + (inputCount + 1) + '" placeholder="" required="true" type="text"></input></div></div></div>';
+      div = document.createElement('div');
+      div.id = 'obj_' + (inputCount+1);
+      div.className = 'input-group';
+      // $(div).attr('id', 'obj');
+      // $(div).attr('class', 'input-group');
+      div.innerHTML = '<input class="form-control" name="txtObjetivo_' + (inputCount + 1) + '" placeholder="" required="true" type="text"></input>';
       document.getElementById('contObjetivo').appendChild(div);
-    }
   }
+}
+// es la funcion para el boton de menos en los objetivos
+function menosObjetivos(){
+  // var divObjetivo = document.getElementById("contObjetivo");
+  var inputCount = document.getElementById('contObjetivo').getElementsByTagName('input').length;
+  if (inputCount != null) {
+    document.getElementById("obj_"+inputCount).remove();
+  }
+}
+
+// Creamos las funciones correspondientes para los alcances
+// ===================================================================
+function creaAlcanceSelect(val){
+  var div = null;
+  var valor = val.value;
+  // $('select[name=selectAlcances]').val;
+  // alert(valor);
+    for (var i = 0; i < valor; i++) {
+      var inputCount = document.getElementById('contAlcance').getElementsByTagName('input').length;
+      // alert(inputCount);
+      div = document.createElement('div');
+      div.id = 'alc_' + (inputCount+1);
+      div.className = 'input-group';
+      // $(div).attr('id', 'obj');
+      // $(div).attr('class', 'input-group');
+      div.innerHTML = '<input class="form-control" name="txtAlcance_' + (inputCount + 1) + '" placeholder="" required="true" type="text"></input>';
+      document.getElementById('contAlcance').appendChild(div);
+  }
+}
+
+function menosAlcances(){
+  // var divObjetivo = document.getElementById("contAlcance");
+  var inputCount = document.getElementById('contAlcance').getElementsByTagName('input').length;
+  if (inputCount != null) {
+    document.getElementById("alc_"+inputCount).remove();
+  }
+}
+// Comienzan los metodos necesarios para crear las restricciones
+// ======================================================================
+function creaResSelect(val){
+  var div = null;
+  var valor = val.value;
+  // $('select[name=selectAlcances]').val;
+  // alert(valor);
+    for (var i = 0; i < valor; i++) {
+      var inputCount = document.getElementById('contRes').getElementsByTagName('input').length;
+      // alert(inputCount);
+      div = document.createElement('div');
+      div.id = 'res_' + (inputCount+1);
+      div.className = 'input-group';
+      // $(div).attr('id', 'obj');
+      // $(div).attr('class', 'input-group');
+      div.innerHTML = '<input class="form-control" name="txtRes_' + (inputCount + 1) + '" placeholder="" required="true" type="text"></input>';
+      document.getElementById('contRes').appendChild(div);
+  }
+}
+
+function menosRes(){
+  var inputCount = document.getElementById('contRes').getElementsByTagName('input').length;
+  if (inputCount != null) {
+    document.getElementById("res_"+inputCount).remove();
+  }
+}
+
+// ===============================================================================
+function habilita(){
+  document.getElementById("idSelectObjetivos").removeAttribute("disabled");
+  document.getElementById("idSelectAlcances").removeAttribute("disabled");
+  document.getElementById("idSelectRes").removeAttribute("disabled");
 }
