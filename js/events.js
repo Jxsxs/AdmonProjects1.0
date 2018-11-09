@@ -26,27 +26,34 @@ function verDatosProyecto(id_pp, nombre_pp, total_objetivos, objetivos, total_al
     verObjetivosProyecto(total_objetivos, objetivos);
     verAlcancesProyecto(total_alcances, alcances);
     verResProyecto(total_res, restricciones);
+    document.getElementById("btnGuardar").setAttribute("style", "display:none;")
 }
 //======================================================================================
 // funcion que muestra el nombre del proyecto obtiene su id
 function verNombreProyecto(id_pp, nombre_pp) {
     // document.getElementById("contentAll").removeAttribute('style');
     // document.getElementById('txtNombreProyecto').value = nombre_pp;
-    var divNombre = document.getElementById("contNombre");
+    var divNombre = document.getElementById("verProyecto");
     var n = 0;
     if (divNombre != null) {
         while (divNombre.hasChildNodes()) {
             divNombre.removeChild(divNombre.lastChild);
         }
     }
-    var div = document.createElement('div');
-    div.setAttribute('class', 'input-group');
-    div.innerHTML = '<div class="col-md-6"><div class="form-group" ><div class="input-group"><input class="form-control" id="txtNombreProyecto" name="txtNombreProyecto" placeholder="Objetivo" required="true" type="text" disabled="true" value="' + nombre_pp + '"></input></div></div></div>';
-    document.getElementById('contNombre').appendChild(div);
+    var inputNombre = document.createElement('input');
+    inputNombre.className = "form-control";
+    inputNombre.id = "txtNombreProyecto";
+    inputNombre.required = true;
+    inputNombre.type = "text";
+    inputNombre.disabled = true;
+    inputNombre.value = nombre_pp;
+    // div.innerHTML = '<input class="form-control" id="txtNombreProyecto" name="txtNombreProyecto" placeholder="Objetivo" required="true" type="text" disabled="true" value="' + nombre_pp + '"></input></div></div></div>';
+    document.getElementById('verProyecto').appendChild(inputNombre);
 }
 // funcion que muestra la y cuenta los objetivos por proyecto seleccionado
 function verObjetivosProyecto(total_objetivos, objetivos) {
-    var divObjetivo = document.getElementById("contObjetivo");
+    var divObjetivo = document.getElementById("verObjetivos");
+    document.getElementById("etiquetaMenosObj").setAttribute("style","display:none;");
     var n = 0;
     if (divObjetivo != null) {
         while (divObjetivo.hasChildNodes()) {
@@ -57,8 +64,8 @@ function verObjetivosProyecto(total_objetivos, objetivos) {
         n = i + 1;
         var div = document.createElement('div');
         div.setAttribute('class', 'input-group');
-        div.innerHTML = '<div class="col-md-6"><div class="form-group" ><div class="input-group"><input class="form-control" id="txtObjetivo_' + (i + 1) + '" name="txtObjetivo_' + (i + 1) + '" placeholder="Objetivo" required="true" type="text" disabled="true" value="' + objetivos[i] + '"></input></div></div></div>';
-        document.getElementById('contObjetivo').appendChild(div);
+        div.innerHTML = '<input class="form-control" id="txtObjetivo_' + (i + 1) + '" name="txtObjetivo_' + (i + 1) + '" placeholder="Objetivo" required="true" type="text" disabled="true" value="' + objetivos[i] + '"></input>';
+        document.getElementById('verObjetivos').appendChild(div);
     }
     // cantidad de inputs dentro del div contObjetivo
     var inputCount = document.getElementById('contObjetivo').getElementsByTagName('input').length;
@@ -66,7 +73,8 @@ function verObjetivosProyecto(total_objetivos, objetivos) {
 }
 // funcion que muestra todos los alcances almacenados en un proyecto
 function verAlcancesProyecto(total_alcances, alcances) {
-    var divAlcance = document.getElementById("contAlcance");
+    var divAlcance = document.getElementById("verAlcance");
+    document.getElementById("etiquetaMenosAlc").setAttribute("style","display:none;");
     var n = 0;
     if (divAlcance != null) {
         while (divAlcance.hasChildNodes()) {
@@ -77,8 +85,8 @@ function verAlcancesProyecto(total_alcances, alcances) {
         n = i + 1;
         var div = document.createElement('div');
         div.setAttribute('class', 'input-group');
-        div.innerHTML = '<div class="col-md-6"><div class="form-group" ><div class="input-group"><input class="form-control" id="txtAlcance_' + (i + 1) + '" name="txtAlcance_' + (i + 1) + '" placeholder="Alcance" required="true" type="text" disabled="true" value="' + alcances[i] + '"></input></div></div></div>';
-        document.getElementById('contAlcance').appendChild(div);
+        div.innerHTML = '<input class="form-control" id="txtAlcance_' + (i + 1) + '" name="txtAlcance_' + (i + 1) + '" placeholder="Alcance" required="true" type="text" disabled="true" value="' + alcances[i] + '"></input>';
+        document.getElementById('verAlcance').appendChild(div);
     }
     // cantidad de inputs dentro del div contObjetivo
     var inputCount = document.getElementById('contAlcance').getElementsByTagName('input').length;
@@ -86,7 +94,9 @@ function verAlcancesProyecto(total_alcances, alcances) {
 }
 
 function verResProyecto(total_res, restricciones) {
-    var divRes = document.getElementById("contRes");
+    var divRes = document.getElementById("verRes");
+    document.getElementById("etiquetaMenosRes").setAttribute("style","display:none;");
+
     var n = 0;
     if (divRes != null) {
         while (divRes.hasChildNodes()) {
@@ -97,8 +107,8 @@ function verResProyecto(total_res, restricciones) {
         n = i + 1;
         var div = document.createElement('div');
         div.setAttribute('class', 'input-group');
-        div.innerHTML = '<div class="col-md-6"><div class="form-group" ><div class="input-group"><input class="form-control" id="txtRes_' + (i + 1) + '" name="txtRes_' + (i + 1) + '" placeholder="Restriccion" required="true" type="text" disabled="true" value="' + restricciones[i] + '"></input></div></div></div>';
-        document.getElementById('contRes').appendChild(div);
+        div.innerHTML = '<input class="form-control" id="txtRes_' + (i + 1) + '" name="txtRes_' + (i + 1) + '" placeholder="Restriccion" required="true" type="text" disabled="true" value="' + restricciones[i] + '"></input>';
+        document.getElementById('verRes').appendChild(div);
     }
     // cantidad de inputs dentro del div contObjetivo
     var inputCount = document.getElementById('contRes').getElementsByTagName('input').length;
@@ -139,6 +149,8 @@ function menosObjetivos(){
   var inputCount = document.getElementById('contObjetivo').getElementsByTagName('input').length;
   if (inputCount != null) {
     document.getElementById("obj_"+inputCount).remove();
+  }else{
+
   }
 }
 

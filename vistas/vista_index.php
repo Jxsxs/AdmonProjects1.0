@@ -5,18 +5,22 @@
         <meta charset="utf-8"/>
         <!--<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>-->
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
-        <title>SAProjects</title>
-
         <!-- Bootstrap CSS CDN -->
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-        <!-- Our Custom CSS -->
         <link rel="stylesheet" href="../css/style.css">
 
-        <!-- Font Awesome JS -->
+        <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+        <!-- <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+
         <script src="../js/events.js" type="text/javascript"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+
+      <title>SAProjects</title>
     </head>
 
     <body>
@@ -76,7 +80,7 @@
                                     <h3>Project Name</h3>
                                 </div>
                                 <br>
-                                <div class="input-group">
+                                <div class="input-group" id="verProyecto">
                                   <input class="form-control" id="name" name="txtNombreProyecto" placeholder="" required="true" type="text" onkeydown="habilita()">
                                   </input>
                                 </div>
@@ -92,7 +96,7 @@
                                   Objetivos
                                 </div>
                                 <br>
-                                <div class="input-group">
+                                <div class="input-group" id="verObjetivos">
                                   <div class="styled-select blue semi-square">
                                      <select name="selectObjetivos" onchange="creaObjetivoSelect(this)" disabled id="idSelectObjetivos">
                                        <option value="" selected>Objetivos</option>
@@ -106,7 +110,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row ml-auto align-item-right" style="text-align:right">
+                    <div class="row ml-auto align-item-right" style="text-align:right" id="etiquetaMenosObj">
                       <div class="col-md-6">
                           <div class="form-group">
                             <a class="nav-link"  onclick="menosObjetivos()" >menos</a>
@@ -126,7 +130,7 @@
                                   Alcances
                                 </div>
                                 <br>
-                                <div class="input-group">
+                                <div class="input-group" id="verAlcance">
                                   <div class="styled-select blue semi-square">
                                      <select name="selectAlcances" onchange="creaAlcanceSelect(this)" disabled id="idSelectAlcances">
                                        <option value="" selected>Alcances</option>
@@ -140,7 +144,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row ml-auto align-item-right" style="text-align:right">
+                    <div class="row ml-auto align-item-right" style="text-align:right" id="etiquetaMenosAlc">
                       <div class="col-md-6">
                           <div class="form-group">
                             <a class="nav-link"  onclick="menosAlcances(this)" >menos</a>
@@ -155,7 +159,7 @@
                                   Restricciones
                                 </div>
                                 <br>
-                                <div class="input-group">
+                                <div class="input-group" id="verRes">
                                   <div class="styled-select blue semi-square">
                                      <select name="selectRes" onchange="creaResSelect(this)" disabled id="idSelectRes">
                                        <option value="" selected>Restricciones</option>
@@ -169,7 +173,7 @@
                             </div>
                           </div>
                         </div>
-                        <div class="row ml-auto align-item-right" style="text-align:right">
+                        <div class="row ml-auto align-item-right" style="text-align:right" id="etiquetaMenosRes">
                           <div class="col-md-6">
                               <div class="form-group">
                                 <a class="nav-link"  onclick="menosRes()" >menos</a>
@@ -180,34 +184,13 @@
                         <div class="row ml-auto align-item-right" style="text-align:right">
                           <div class="col-md-6">
                               <div class="form-group">
-                                <button class="btn btn-success" name="btnGuardaProyecto" type="submit">
+                                <button class="btn btn-success" name="btnGuardaProyecto" type="submit" id="btnGuardar">
                                 Save
                                 </button>
                               </div>
                           </div>
                         </div>
                     </div>
-                   <!--  <div class="row flex-column align-content-center">
-                        <a href="#" id="generaRestriccion">
-                            More
-                        </a>
-                    </div> -->
-                    <!-- boton que envia el formulario -->
-                    <!-- <div class="container"> -->
-                     <!--  <div class="row">
-                        <div class="col-4 col-sm-2">
-
-                           <button class="btn btn-success" name="btnEditProyecto" type="submit" onclick="habilitaEdicionProyecto()">
-                            Edit
-                            </button>
-                        </div>
-                        <div class="col-4 col-sm-2">
-                            <button class="btn btn-success" name="btnGuardaProyecto" type="submit">
-                            Save
-                            </button>
-                        </div>
-                      </div> -->
-                    <!-- </div> -->
                 </div>
             </div>
 
