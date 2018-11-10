@@ -60,7 +60,7 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="nav navbar-nav ml-auto">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="#" onclick="">Nuevo Proyecto</a>
+                                    <a class="nav-link" href="#" onclick="nuevoProyecto()">Nuevo Proyecto</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="modal" href="#nuevaCarpeta">Nueva Carpeta</a>
@@ -81,8 +81,8 @@
                                 </div>
                                 <br>
                                 <div class="input-group" id="verProyecto">
-                                  <input class="form-control" id="name" name="txtNombreProyecto" placeholder="" required="true" type="text" onkeydown="habilita()">
-                                  </input>
+                                  <!-- <input class="form-control" id="name" name="txtNombreProyecto" placeholder="" required="true" type="text" onkeydown="habilita()">
+                                  </input> -->
                                 </div>
                             </div>
                         </div>
@@ -97,20 +97,20 @@
                                 </div>
                                 <br>
                                 <div class="input-group" id="verObjetivos">
-                                  <div class="styled-select blue semi-square">
+                                  <!-- <div class="styled-select blue semi-square">
                                      <select name="selectObjetivos" onchange="creaObjetivoSelect(this)" disabled id="idSelectObjetivos">
                                        <option value="" selected>Objetivos</option>
                                        <option value="1">1</option>
                                        <option value="2">2</option>
                                        <option value="3">3</option>
                                      </select>
-                                   </div>
+                                   </div> -->
                                 </div>
                                 <br>
                             </div>
                         </div>
                     </div>
-                    <div class="row ml-auto align-item-right" style="text-align:right" id="etiquetaMenosObj">
+                    <div class="row ml-auto align-item-right" style="text-align:right; display:none;" id="etiquetaMenosObj">
                       <div class="col-md-6">
                           <div class="form-group">
                             <a class="nav-link"  onclick="menosObjetivos()" >menos</a>

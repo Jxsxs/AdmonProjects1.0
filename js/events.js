@@ -5,6 +5,31 @@ $(document).ready(function() {
     });
 });
 
+function nuevoProyecto(){
+  limpiaDivs();
+  crearNombre();
+  crearObjetivo();
+}
+function crearNombre(){
+  var inputNombre = document.createElement('input');
+  inputNombre.className = "form-control";
+  inputNombre.id = "txtNombreProyecto";
+  inputNombre.required = true;
+  inputNombre.type = "text";
+  // div.innerHTML = '<input class="form-control" id="txtNombreProyecto" name="txtNombreProyecto" placeholder="Objetivo" required="true" type="text" disabled="true" value="' + nombre_pp + '"></input></div></div></div>';
+  document.getElementById('verProyecto').appendChild(inputNombre);
+  document.getElementById('etiquetaMenosObj').removeAttribute("style");
+}
+
+function crearObjetivo() {
+    var div = document.createElement('div');
+    div.className = 'styled-select blue semi-square';
+    div.innerHTML = '<select name="selectObjetivos" onchange="creaObjetivoSelect(this)"  id="idSelectObjetivos">'+
+     '<option value="" selected>Objetivos</option> <option value="1">1</option>'+
+     '<option value="2">2</option> <option value="3">3</option></select>';
+     document.getElementById('verObjetivos').appendChild(div);
+}
+
 function habilitaEdicionProyecto() {
     document.getElementById('txtNombreProyecto').removeAttribute('disabled');
     var inputObjetivo = document.getElementById('contObjetivo').getElementsByTagName('input').length;
@@ -96,7 +121,6 @@ function verAlcancesProyecto(total_alcances, alcances) {
 function verResProyecto(total_res, restricciones) {
     var divRes = document.getElementById("verRes");
     document.getElementById("etiquetaMenosRes").setAttribute("style","display:none;");
-
     var n = 0;
     if (divRes != null) {
         while (divRes.hasChildNodes()) {
@@ -114,16 +138,6 @@ function verResProyecto(total_res, restricciones) {
     var inputCount = document.getElementById('contRes').getElementsByTagName('input').length;
     // alert(inputCount);
 }
-
-function creaObjetivo() {
-    var inputCount = document.getElementById('contObjetivo').getElementsByTagName('input').length;
-    // alert(inputCount);
-    var div = document.createElement('div');
-    div.setAttribute('class', 'input-group');
-    div.innerHTML = '<div class="col-md-6"><div class="form-group" ><div class="input-group"><input class="form-control" name="txtObjetivo_' + (inputCount + 1) + '" placeholder="Objetivo" required="true" type="text" disabled="true"></input></div></div></div>';
-    document.getElementById('contObjetivo').appendChild(div);
-}
-
 // De aqui para adelante es donde se crean los objetos con los selects
 // =======================================================================
 function creaObjetivoSelect(val){
@@ -147,7 +161,7 @@ function creaObjetivoSelect(val){
 function menosObjetivos(){
   // var divObjetivo = document.getElementById("contObjetivo");
   var inputCount = document.getElementById('contObjetivo').getElementsByTagName('input').length;
-  if (inputCount != null) {
+  if (inputCount != 0) {
     document.getElementById("obj_"+inputCount).remove();
   }else{
 
@@ -213,4 +227,38 @@ function habilita(){
   document.getElementById("idSelectObjetivos").removeAttribute("disabled");
   document.getElementById("idSelectAlcances").removeAttribute("disabled");
   document.getElementById("idSelectRes").removeAttribute("disabled");
+}
+
+function limpiaDivs(){
+  var divNombre = document.getElementById("verProyecto");
+  var n = 0;
+  if (divNombre != null) {
+      while (divNombre.hasChildNodes()) {
+          divNombre.removeChild(divNombre.lastChild);
+      }
+  }
+  var divObjetivo = document.getElementById("verObjetivos");
+  document.getElementById("etiquetaMenosObj").setAttribute("style","display:none;");
+  var n = 0;
+  if (divObjetivo != null) {
+      while (divObjetivo.hasChildNodes()) {
+          divObjetivo.removeChild(divObjetivo.lastChild);
+      }
+  }
+  var divAlcance = document.getElementById("verAlcance");
+  document.getElementById("etiquetaMenosAlc").setAttribute("style","display:none;");
+  var n = 0;
+  if (divAlcance != null) {
+      while (divAlcance.hasChildNodes()) {
+          divAlcance.removeChild(divAlcance.lastChild);
+      }
+  }
+  var divRes = document.getElementById("verRes");
+  document.getElementById("etiquetaMenosRes").setAttribute("style","display:none;");
+  var n = 0;
+  if (divRes != null) {
+      while (divRes.hasChildNodes()) {
+          divRes.removeChild(divRes.lastChild);
+      }
+  }
 }
