@@ -6,9 +6,24 @@ $(document).ready(function() {
 });
 
 function nuevoProyecto(){
+  document.getElementById("bienvenido").setAttribute("style", "display:none");
+  document.getElementById("contentAll").style.display = "";
   limpiaDivs();
   crearNombre();
   crearObjetivo();
+  crearAlcance();
+  crearRestriccion();
+}
+function enviaVariables(){
+  var data = { "numero":4 };
+    $.ajax({
+    type:"POST",
+    url:"../controller/control_nuevo_proyecto.php",
+    data: data,
+    success:function(){
+      alert("Se ha ejecutado el paso de la variable");
+    }
+  });
 }
 function crearNombre(){
   var inputNombre = document.createElement('input');
@@ -19,6 +34,8 @@ function crearNombre(){
   // div.innerHTML = '<input class="form-control" id="txtNombreProyecto" name="txtNombreProyecto" placeholder="Objetivo" required="true" type="text" disabled="true" value="' + nombre_pp + '"></input></div></div></div>';
   document.getElementById('verProyecto').appendChild(inputNombre);
   document.getElementById('etiquetaMenosObj').removeAttribute("style");
+  document.getElementById('etiquetaMenosAlc').removeAttribute("style");
+  document.getElementById('etiquetaMenosRes').removeAttribute("style");
 }
 
 function crearObjetivo() {
@@ -28,6 +45,24 @@ function crearObjetivo() {
      '<option value="" selected>Objetivos</option> <option value="1">1</option>'+
      '<option value="2">2</option> <option value="3">3</option></select>';
      document.getElementById('verObjetivos').appendChild(div);
+}
+
+function crearAlcance() {
+    var div = document.createElement('div');
+    div.className = 'styled-select blue semi-square';
+    div.innerHTML = '<select name="selectAlcances" onchange="creaAlcanceSelect(this)"  id="idSelectAlcances">'+
+     '<option value="" selected>Alcances</option> <option value="1">1</option>'+
+     '<option value="2">2</option> <option value="3">3</option></select>';
+     document.getElementById('verAlcance').appendChild(div);
+}
+
+function crearRestriccion() {
+    var div = document.createElement('div');
+    div.className = 'styled-select blue semi-square';
+    div.innerHTML = '<select name="selectRes" onchange="creaResSelect(this)"  id="idSelectRes">'+
+     '<option value="" selected>Restricciones</option> <option value="1">1</option>'+
+     '<option value="2">2</option> <option value="3">3</option></select>';
+     document.getElementById('verRes').appendChild(div);
 }
 
 function habilitaEdicionProyecto() {
@@ -47,11 +82,13 @@ function habilitaEdicionProyecto() {
 }
 // =======funcion principal que muestra todos los datos de un proyecto seleccionado============
 function verDatosProyecto(id_pp, nombre_pp, total_objetivos, objetivos, total_alcances, alcances, total_res, restricciones) {
+    document.getElementById("bienvenido").setAttribute("style", "display:none");
+    document.getElementById("contentAll").style.display = "";
     verNombreProyecto(id_pp, nombre_pp);
     verObjetivosProyecto(total_objetivos, objetivos);
     verAlcancesProyecto(total_alcances, alcances);
     verResProyecto(total_res, restricciones);
-    document.getElementById("btnGuardar").setAttribute("style", "display:none;")
+    document.getElementById("btnGuardar").setAttribute("style", "display:none;");
 }
 //======================================================================================
 // funcion que muestra el nombre del proyecto obtiene su id
@@ -163,8 +200,6 @@ function menosObjetivos(){
   var inputCount = document.getElementById('contObjetivo').getElementsByTagName('input').length;
   if (inputCount != 0) {
     document.getElementById("obj_"+inputCount).remove();
-  }else{
-
   }
 }
 
@@ -191,7 +226,7 @@ function creaAlcanceSelect(val){
 function menosAlcances(){
   // var divObjetivo = document.getElementById("contAlcance");
   var inputCount = document.getElementById('contAlcance').getElementsByTagName('input').length;
-  if (inputCount != null) {
+  if (inputCount != 0) {
     document.getElementById("alc_"+inputCount).remove();
   }
 }
@@ -217,7 +252,7 @@ function creaResSelect(val){
 
 function menosRes(){
   var inputCount = document.getElementById('contRes').getElementsByTagName('input').length;
-  if (inputCount != null) {
+  if (inputCount != 0) {
     document.getElementById("res_"+inputCount).remove();
   }
 }

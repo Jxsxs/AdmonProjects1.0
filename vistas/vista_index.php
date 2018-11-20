@@ -11,11 +11,16 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
         <link rel="stylesheet" href="../css/style.css">
 
-        <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
         <!-- <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
-
+        <script
+			  src="https://code.jquery.com/jquery-3.3.0.min.js"
+			  integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4="
+			  crossorigin="anonymous"></script>
         <script src="../js/events.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
@@ -28,36 +33,36 @@
         session_start();
         include '../controller/contro_agrega_carpeta.php';
         ?>
-        <div class="wrapper">
+        <div class="wrapper" style="margin-top:60px">
             <!-- Sidebar  -->
             <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h3>Administracion Por Carpetas</h3>
-                    <strong>SAP</strong>
-                </div>
+                <!-- <div class="sidebar-header"> -->
+                    <!-- <h3></h3>
+                    <strong>SAP</strong> -->
+                <!-- </div> -->
 
                 <ul class="list-unstyled components">
                     <li class="active">
                         <?php
                         include '../controller/control_muestra_carpetas.php';
+                        // include '../controller/control_nuevo_proyecto.php';
                         ?>
                 </ul>
             </nav>
 
             <!-- Page Content  -->
             <div id="content" >
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <nav class="navbar navbar-expand-lg fixed-top">
                     <div class="container-fluid">
-
-                        <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <button type="button" id="sidebarCollapse" class="btn d-inline-block d-lg-none" data-toggle="collapse" data-target="#sidebar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <i class="fas fa-align-left"></i>
                         </button>
-
+                        <h3 style="color:white;">APS</h3>
                         <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <i class="fas fa-align-justify"></i>
                         </button>
 
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="color:white;">
                             <ul class="nav navbar-nav ml-auto">
                                 <li class="nav-item active">
                                     <a class="nav-link" href="#" onclick="nuevoProyecto()">Nuevo Proyecto</a>
@@ -72,7 +77,15 @@
                         </div>
                     </div>
                 </nav>
-                <div id="contentAll"  style="margin:0 auto; width:auto;;padding:auto;">
+                <div class="content" style="margin-top:15%; position: fixed; margin-left: 30%" id="bienvenido">
+                  <div class="card" >
+                    <div class="card-body" style="text-align:center;">
+                        <h1> Bienvenido</h1>
+                    </div>
+                  </div>
+
+                </div>
+                <div id="contentAll"  style="margin:0 auto; width:auto;padding:auto; display:none;" >
                     <div class="row ml-auto" id="contNombre">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -81,8 +94,7 @@
                                 </div>
                                 <br>
                                 <div class="input-group" id="verProyecto">
-                                  <!-- <input class="form-control" id="name" name="txtNombreProyecto" placeholder="" required="true" type="text" onkeydown="habilita()">
-                                  </input> -->
+
                                 </div>
                             </div>
                         </div>
@@ -91,20 +103,12 @@
                     <div class="row ml-auto" >
                         <div class="col-md-6">
                             <div class="form-group" id="contObjetivo">
-                                 <hr style="float: left; width: 200px;">
+                                <hr style="float: left; width: 200px;">
                                 <div class="input-group">
                                   Objetivos
                                 </div>
                                 <br>
                                 <div class="input-group" id="verObjetivos">
-                                  <!-- <div class="styled-select blue semi-square">
-                                     <select name="selectObjetivos" onchange="creaObjetivoSelect(this)" disabled id="idSelectObjetivos">
-                                       <option value="" selected>Objetivos</option>
-                                       <option value="1">1</option>
-                                       <option value="2">2</option>
-                                       <option value="3">3</option>
-                                     </select>
-                                   </div> -->
                                 </div>
                                 <br>
                             </div>
@@ -117,11 +121,6 @@
                           </div>
                       </div>
                     </div>
-               <!--      <div class="row flex-column align-content-center">
-                        <a href="#" onclick="creaObjetivo()">
-                            Nuevo Objetivo
-                        </a>
-                    </div> -->
                     <div class="row ml-auto" >
                         <div class="col-md-6">
                             <div class="form-group" id="contAlcance">
@@ -131,14 +130,6 @@
                                 </div>
                                 <br>
                                 <div class="input-group" id="verAlcance">
-                                  <div class="styled-select blue semi-square">
-                                     <select name="selectAlcances" onchange="creaAlcanceSelect(this)" disabled id="idSelectAlcances">
-                                       <option value="" selected>Alcances</option>
-                                       <option value="1">1</option>
-                                       <option value="2">2</option>
-                                       <option value="3">3</option>
-                                     </select>
-                                   </div>
                                 </div>
                                 <br>
                             </div>
@@ -147,7 +138,7 @@
                     <div class="row ml-auto align-item-right" style="text-align:right" id="etiquetaMenosAlc">
                       <div class="col-md-6">
                           <div class="form-group">
-                            <a class="nav-link"  onclick="menosAlcances(this)" >menos</a>
+                            <a class="nav-link"  onclick="menosAlcances()" >menos</a>
                           </div>
                       </div>
                     </div>
@@ -160,20 +151,12 @@
                                 </div>
                                 <br>
                                 <div class="input-group" id="verRes">
-                                  <div class="styled-select blue semi-square">
-                                     <select name="selectRes" onchange="creaResSelect(this)" disabled id="idSelectRes">
-                                       <option value="" selected>Restricciones</option>
-                                       <option value="1">1</option>
-                                       <option value="2">2</option>
-                                       <option value="3">3</option>
-                                     </select>
-                                   </div>
                                 </div>
                                 <br>
                             </div>
                           </div>
                         </div>
-                        <div class="row ml-auto align-item-right" style="text-align:right" id="etiquetaMenosRes">
+                        <div class="row ml-auto align-item-right" id="etiquetaMenosRes">
                           <div class="col-md-6">
                               <div class="form-group">
                                 <a class="nav-link"  onclick="menosRes()" >menos</a>
@@ -184,7 +167,7 @@
                         <div class="row ml-auto align-item-right" style="text-align:right">
                           <div class="col-md-6">
                               <div class="form-group">
-                                <button class="btn btn-success" name="btnGuardaProyecto" type="submit" id="btnGuardar">
+                                <button class="btn btn-success" name="btnGuardaProyecto" type="submit" id="btnGuardar" onclick="enviaVariables();">
                                 Save
                                 </button>
                               </div>

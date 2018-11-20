@@ -31,7 +31,7 @@ a:focus {
 
 .navbar {
   padding: 15px 10px;
-  background: #fff;
+  background:#7386D5;
   border: none;
   border-radius: 0;
   margin-bottom: 40px;
@@ -70,6 +70,7 @@ span {
   background: #7386D5;
   color: #fff;
   transition: all 0.3s;
+  /* position: fixed; */
 }
 
 #sidebar.active {
