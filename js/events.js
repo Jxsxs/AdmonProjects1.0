@@ -15,13 +15,26 @@ function nuevoProyecto(){
   crearRestriccion();
 }
 function enviaVariables(){
-  var data = { "numero":4 };
-    $.ajax({
-    type:"POST",
-    url:"../controller/control_nuevo_proyecto.php",
-    data: data,
-    success:function(){
-      alert("Se ha ejecutado el paso de la variable");
+  var datos = {
+    "numero1":5,
+    "numero2":2
+  };
+  $.ajax({
+    data:datos,
+    url : "../controller/control_nuevo_proyecto.php",
+    type: "POST",
+    beforeSend: function () {
+            $("#datos").html("Se está procesando la solicitud ...");
+            // document.getElementById("inputNumber").disabled = true;
+    },
+    success:  function (response) {
+          // var myArr = JSON.parse(this.response);
+            $("#datos").html("suma: " + response);
+      //   }
+      // }
+    },
+    error: function(){
+            $("#datos").html("Error: no se realizó la operación");
     }
   });
 }
