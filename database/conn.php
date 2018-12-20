@@ -2,7 +2,7 @@
 
 $host = "localhost";
 $user = "postgres";
-$pass = "star2018";
+$pass = "123";
 $dbname = "AdmonProjects";
 
 $conn = pg_connect("host=$host user=$user password=$pass dbname=$dbname");
