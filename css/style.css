@@ -9,8 +9,8 @@ body {
 }
 
 hr {
-  float: left;
-  width: 150px;
+  float: right;
+  width: 90%;
 }
 
 p {
@@ -59,10 +59,10 @@ span {
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
-.wrapper {
+/* .wrapper {
   display: flex;
   align-items: stretch;
-}
+} */
 
 #sidebar {
   min-width: 250px;
@@ -70,7 +70,17 @@ span {
   background: #7386D5;
   color: #fff;
   transition: all 0.3s;
+
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 160px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
   /* position: fixed; */
+  list-style: none;
 }
 
 #sidebar.active {
@@ -131,6 +141,7 @@ span {
 #sidebar ul.components {
   padding: 20px 0;
   border-bottom: 1px solid #47748b;
+
 }
 
 #sidebar ul li a {
@@ -199,23 +210,37 @@ a.article:hover {
     CONTENT STYLE
 ----------------------------------------------------- */
 #content {
-  width: 100%;
+  /* width: 100%; */
   padding: 20px;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   transition: all 0.3s;
+  margin-left: 18% ;
+  margin-top:60px;
+  width:auto;
 }
 
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
-@media (max-width: 768px) {
+/* @media only screen and (min-width: 300px) {
+#content{
+    margin-left: 18%;
+ }
+} */
+
+@media screen and (width: 1920px) {
+  #content{
+      margin-left: 13%;
+  }
+}
+
+@media screen and (max-width: 600px) {
   #sidebar {
     min-width: 80px;
     max-width: 80px;
     text-align: center;
     margin-left: -80px !important;
   }
-
   .dropdown-toggle::after {
     top: auto;
     bottom: 10px;
@@ -311,4 +336,42 @@ a.article:hover {
 
 .blue select {
   color: #fff;
+}
+
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 160px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Style page content */
+.main {
+  margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 }

@@ -1,28 +1,12 @@
 <!DOCTYPE html>
 <html>
-
     <head>
         <meta charset="utf-8"/>
         <!--<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>-->
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
-        <!-- Bootstrap CSS CDN -->
-
-
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
         <link rel="stylesheet" href="../css/style.css">
-
-        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-        <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-
-        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-        <script src="../js/events.js" type="text/javascript"></script>
-
 
       <title>SAProjects</title>
     </head>
@@ -35,17 +19,12 @@
         <div class="wrapper" style="margin-top:60px">
             <!-- Sidebar  -->
             <nav id="sidebar">
-                <!-- <div class="sidebar-header"> -->
-                    <!-- <h3></h3>
-                    <strong>SAP</strong> -->
-                <!-- </div> -->
-
-                <ul class="list-unstyled components">
+                  <ul class="list-unstyled components">
                     <li class="active">
-                        <?php
-                        include '../controller/control_muestra_carpetas.php';
-                        // include '../controller/control_nuevo_proyecto.php';
-                        ?>
+                      <?php
+                      include '../controller/control_muestra_carpetas.php';
+                      // include '../controller/control_nuevo_proyecto.php';
+                      ?>
                 </ul>
             </nav>
 
@@ -78,41 +57,72 @@
                 </nav>
                 <div class="content" style="margin-top:15%; position: fixed; margin-left: 30%" id="bienvenido">
                   <div class="card" >
-                    <div class="card-body" style="text-align:center;">
+                    <div class="card-body" style="text-align:center;" id="siBien">
                         <h1> Bienvenido</h1>
                     </div>
+                    <!-- <div class="card-body" id="noBien" style="text-align:center; display:none;">
+                        <h1> No eres bienvenido</h1>
+                    </div>
+                    <div class="card-body" style="text-align:center;">
+                      <button class="btn btn-success" name="algo" type="submit" id="btnAlgo" onclick="pruebaMostrar();">
+                        Press
+                      </button>
+                    </div> -->
                   </div>
-
                 </div>
-                <div id="contentAll"  style="margin:0 auto; width:auto;padding:auto; display:none;" >
-                    <div class="row ml-auto" id="contNombre">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <h3>Project Name</h3>
-                                </div>
-                                <br>
-                                <div class="input-group" id="verProyecto">
+                <div id="contentAll" class="container" style="margin:0 auto; width:auto;padding:auto; display:none;" >
+                    <div class="row " id="contNombre">
+                      <div class="col-md-12">
+                          <div class="well well-md">
+                              <form class="form-horizontal" method="post">
+                                  <fieldset>
+                                    <legend class="text-center header">Proyecto</legend>
+                                    <div class="form-group ">
+                                      <span class="col-md-1 col-md-offset-3 text-center">Titulo:</span>
+                                      <div class="col-md-8" id="verProyecto">
+                                        <!-- <div class="input-group"> -->
+                                            <!-- <h3>Project Name</h3> -->
+                                      </div>
+                                      <br>
+                                    </div>
 
-                                </div>
-                            </div>
+                                    <div class="form-group" id="contObjetivo">
+                                        <!-- <hr style="float: left; width: 200px;"> -->
+                                        <span class="col-md-1 col-md-offset-2 text-center">Objetivos:</span>
+                                        <div class="col-md-8" id="verObjetivos">
+
+                                        </div>
+                                        <br>
+                                    </div>
+
+                                    <div class="form-group" id="contAlcance">
+                                        <!-- <hr style="float: left; width: 200px;"> -->
+                                        <span class="col-md-1 col-md-offset-2 text-center">Alcances:</span>
+                                        <div class="col-md-8" id="verAlcance">
+
+                                        </div>
+                                        <br>
+                                    </div>
+
+                                    <div class="form-group" id="contRes">
+                                        <!-- <hr style="float: left; width: 200px;"> -->
+                                        <span class="col-md-1 col-md-offset-2 text-center">Rstricciones:</span>
+                                        <div class="col-md-8" id="verRes">
+
+                                        </div>
+                                        <br>
+                                    </div>
+                                </fieldset>
+                            </form>
                         </div>
                     </div>
+                </div>
 
-                    <div class="row ml-auto" >
+                    <!-- <div class="row ml-auto" >
                         <div class="col-md-6">
-                            <div class="form-group" id="contObjetivo">
-                                <hr style="float: left; width: 200px;">
-                                <div class="input-group">
-                                  Objetivos
-                                </div>
-                                <br>
-                                <div class="input-group" id="verObjetivos">
-                                </div>
-                                <br>
-                            </div>
+
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row ml-auto align-item-right" style="text-align:right; display:none;" id="etiquetaMenosObj">
                       <div class="col-md-6">
                           <div class="form-group">
@@ -120,20 +130,7 @@
                           </div>
                       </div>
                     </div>
-                    <div class="row ml-auto" >
-                        <div class="col-md-6">
-                            <div class="form-group" id="contAlcance">
-                                <hr style="float: left; width: 200px;">
-                                <div class="input-group">
-                                  Alcances
-                                </div>
-                                <br>
-                                <div class="input-group" id="verAlcance">
-                                </div>
-                                <br>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="row ml-auto align-item-right" style="text-align:right" id="etiquetaMenosAlc">
                       <div class="col-md-6">
                           <div class="form-group">
@@ -141,41 +138,28 @@
                           </div>
                       </div>
                     </div>
-                    <div class="row ml-auto">
-                        <div class="col-md-6">
-                            <div class="form-group"  id="contRes">
-                                <hr style="float: left; width: 200px;">
-                                <div class="input-group">
-                                  Restricciones
-                                </div>
-                                <br>
-                                <div class="input-group" id="verRes">
-                                </div>
-                                <br>
+
+                    <div class="row ml-auto align-item-right" id="etiquetaMenosRes">
+                      <div class="col-md-6">
+                          <div class="form-group">
+                            <a class="nav-link"  onclick="menosRes()" >menos</a>
+                          </div>
+                      </div>
+                    </div>
+                    <!-- en esta parte va el boton para guardar -->
+                    <div class="row ml-auto align-item-right" style="text-align:right">
+                      <div class="col-md-6">
+                          <div class="form-group">
+                            <button class="btn btn-success" name="btnGuardaProyecto" type="submit" id="btnGuardar" onclick="enviaVariables();">
+                            Save
+                            </button>
+                            <div id="datos">
+
                             </div>
                           </div>
-                        </div>
-                        <div class="row ml-auto align-item-right" id="etiquetaMenosRes">
-                          <div class="col-md-6">
-                              <div class="form-group">
-                                <a class="nav-link"  onclick="menosRes()" >menos</a>
-                              </div>
-                          </div>
-                        </div>
-                        <!-- en esta parte va el boton para guardar -->
-                        <div class="row ml-auto align-item-right" style="text-align:right">
-                          <div class="col-md-6">
-                              <div class="form-group">
-                                <button class="btn btn-success" name="btnGuardaProyecto" type="submit" id="btnGuardar" onclick="enviaVariables();">
-                                Save
-                                </button>
-                                <div id="datos">
-
-                                </div>
-                              </div>
-                          </div>
-                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
 
             </div>
@@ -234,23 +218,20 @@
                 </div>
             </div>
         </div>
-
-        <!-- jQuery CDN - Slim version (=without AJAX) -->
-        <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-        <!-- Popper.JS -->
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script> -->
-        <!-- Bootstrap JS -->
-        <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script> -->
-
-
-
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#sidebarCollapse').on('click', function () {
-                    $('#sidebar').toggleClass('active');
-                });
-            });
-        </script>
     </body>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script src="../js/events.js" type="text/javascript"></script>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
 </html>

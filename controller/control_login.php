@@ -16,7 +16,7 @@ if (isset($_POST["btnEnviar"])) {
         if ($usuario != null) {
             session_start();
             $_SESSION["id_usuario"] = $id_user;
-            header("Location: vista_index.php");
+            header("Location: vista_index2.php");
         } else {
             echo "No se encuentra registrado";
         }
