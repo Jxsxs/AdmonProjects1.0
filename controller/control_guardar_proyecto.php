@@ -1,13 +1,12 @@
 <?php
 include '../database/conn.php';
 
-header("Content-Type: application/json;");
-
 $titulo_proyecto = $_POST["titulo_proyecto"];
 $objetivos = $_POST["objetivos"];
 $alcances = $_POST["alcances"];
 $restricciones = $_POST["restricciones"];
 $id_carpeta = $_POST["id_carpeta"];
+
 
 $query_proyecto = "insert into plan_proyecto(id_carpeta, nombre_proyecto) values (".$id_carpeta.", '".$titulo_proyecto."')";
 
@@ -36,7 +35,5 @@ if (!pg_query($conn, $query_proyecto)) {
       echo "No se pudo agregar la restriccion";
     }
   }
-
-  //aqui van los alcances (Prcticamente igual que en los objetivos.. vamonos a dormir .-.zzz)
   echo "Se guardo el proyecto";
 }

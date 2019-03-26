@@ -126,7 +126,7 @@
                           <label class="col-lg-8 col-form-label form-control-label"></label>
                           <div class="col-lg-4 text-right">
                             <input type="reset" class="btn btn-secondary" id="btnCancelar" style="display:none;" onclick="cancelar();" value="Cancel">
-                            <input type="submit" class="btn btn-primary" value="Save Changes" id="btnGuardar" onclick="guardarProyecto();">
+                            <input type="button" class="btn btn-primary" value="Save Changes" id="btnGuardar" onclick="guardarProyecto();">
                             <input type="button" class="btn btn-primary" value="Edit" id="btnEdit" style="display:none;" onclick="editarProyecto();">
                             <input type="button" class="btn btn-primary" value="Actualizar" id="btnActualizar" style="display:none;" onclick="actualizarProyecto();">
                           </div>

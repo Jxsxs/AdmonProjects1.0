@@ -215,10 +215,13 @@ function guardarProyecto(){
     data:datos,
     url : "../controller/control_guardar_proyecto.php",
     type: "POST",
-    success:  function (response) {
+    success: function (response) {
       alert(response);
+      // limpiaDivs();
+      location.reload();
     },
     error: function(){
+      alert("No se guardó el proyecto");
     }
   });
 }
@@ -236,7 +239,7 @@ function actualizarProyecto(){
     // console.log(id_carpeta);
   }
   for (var i = 1; i <= contObjetivos; i++) {
-    if (document.getElementById("txtObjetivo_" + i).value != "") {
+    if (document.getElementById("txtObjetivo_" + i).value != "" && document.getElementById("txtObjetivo_" + i).value != null) {
       objetivos.push(document.getElementById("txtObjetivo_" + i).value);
     }
   }
@@ -257,10 +260,10 @@ function actualizarProyecto(){
     "alcances":alcances,
     "restricciones":restricciones,
     "id_carpeta":id_carpeta,
-    "nombre_proyecto_anterior":nombre_proyecto_anterior,
-    "nombre_objetivos_anterior":nombre_objetivos_anterior,
-    "nombre_alcances_anterior":nombre_alcances_anterior,
-    "nombre_restricciones_anterior":nombre_restricciones_anterior
+    "nombre_proyecto_anterior":nombre_proyecto_anterior
+    // "nombre_objetivos_anterior":nombre_objetivos_anterior,
+    // "nombre_alcances_anterior":nombre_alcances_anterior,
+    // "nombre_restricciones_anterior":nombre_restricciones_anterior
   };
   $.ajax({
     data:datos,
@@ -268,7 +271,7 @@ function actualizarProyecto(){
     type: "POST",
     success:  function (response) {
       alert(response);
-      nombre_objetivos_anterior = [];
+      // nombre_objetivos_anterior = [];
     },
     error: function(){
     }
@@ -607,35 +610,21 @@ function habilita(){
 }
 
 function limpiaDivs(){
-  var divNombre = document.getElementById("verProyecto");
-  var n = 0;
-  if (divNombre != null) {
-      while (divNombre.hasChildNodes()) {
-          divNombre.removeChild(divNombre.lastChild);
-      }
+  document.getElementById('txtTitulo').value = "";
+
+  var inputCountObj = document.getElementById('objetivos').getElementsByTagName('input').length;
+  for (var i = 0; i < inputCountObj; i++) {
+    document.getElementById('txtObjetivo_'+(i+1)).value = "";
   }
-  var divObjetivo = document.getElementById("verObjetivos");
-  document.getElementById("etiquetaMenosObj").setAttribute("style","display:none;");
-  var n = 0;
-  if (divObjetivo != null) {
-      while (divObjetivo.hasChildNodes()) {
-          divObjetivo.removeChild(divObjetivo.lastChild);
-      }
+
+  var inputCountAlc = document.getElementById('alcances').getElementsByTagName('input').length;
+  for (var i = 0; i < inputCountAlc; i++) {
+    document.getElementById('txtAlcance_'+(i+1)).value = "";
   }
-  var divAlcance = document.getElementById("verAlcance");
-  document.getElementById("etiquetaMenosAlc").setAttribute("style","display:none;");
-  var n = 0;
-  if (divAlcance != null) {
-      while (divAlcance.hasChildNodes()) {
-          divAlcance.removeChild(divAlcance.lastChild);
-      }
+
+  var inputCountRes = document.getElementById('restricciones').getElementsByTagName('input').length;
+  for (var i = 0; i < inputCountRes; i++) {
+    document.getElementById('txtRes_'+(i+1)).value = "";
   }
-  var divRes = document.getElementById("verRes");
-  document.getElementById("etiquetaMenosRes").setAttribute("style","display:none;");
-  var n = 0;
-  if (divRes != null) {
-      while (divRes.hasChildNodes()) {
-          divRes.removeChild(divRes.lastChild);
-      }
-  }
+
 }

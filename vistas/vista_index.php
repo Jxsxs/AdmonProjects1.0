@@ -106,7 +106,7 @@
 
                                     <div class="form-group" id="contRes">
                                         <!-- <hr style="float: left; width: 200px;"> -->
-                                        <span class="col-md-1 col-md-offset-2 text-center">Rstricciones:</span>
+                                        <span class="col-md-1 col-md-offset-2 text-center">Restricciones:</span>
                                         <div class="col-md-8" id="verRes">
 
                                         </div>
@@ -150,7 +150,7 @@
                     <div class="row ml-auto align-item-right" style="text-align:right">
                       <div class="col-md-6">
                           <div class="form-group">
-                            <button class="btn btn-success" name="btnGuardaProyecto" type="submit" id="btnGuardar" onclick="enviaVariables();">
+                            <button class="btn btn-success" name="btnGuardaProyecto" type="button" id="btnGuardar" onclick="enviaVariables();">
                             Save
                             </button>
                             <div id="datos">
@@ -187,7 +187,7 @@
                                     </hr>
                                 </div>
                             </div>
-                            <form role="form" action='<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>' method="post" class="">
+                            <!-- <form role="form" action='<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>' method="post" class=""> -->
                                 <div class="row flex-column align-content-center">
                                     <div class="col-md-6 ">
                                         <div class="form-group">
@@ -205,14 +205,14 @@
                                 <div class="row flex-column align-content-end">
                                     <div class="col-md-6">
                                         <!-- boton que envia el formulario -->
-                                        <button class="btn btn-success" name="btnGuardarCarpeta" type="submit">
+                                        <button class="btn btn-success" name="btnGuardarCarpeta" type="button" onclick="cambiarPass();">
                                                 <i class="fa fa-user-plus">
                                             </i>
                                             Guardar
                                         </button>
                                     </div>
                                 </div>
-                            </form>
+                            <!-- </form> -->
                         </div>
                     </div>
                 </div>
@@ -225,7 +225,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-    <script src="../js/events.js" type="text/javascript"></script>
+    <script src="../model/change_pass.js" type="text/javascript"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
