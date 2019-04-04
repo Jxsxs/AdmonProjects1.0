@@ -8,6 +8,7 @@ $nombre_proyecto_anterior = $_POST["nombre_proyecto_anterior"];
 
 $titulo_proyecto = $_POST["titulo_proyecto"];
 $objetivos = $_POST["objetivos"];
+// var_dump($objetivos);
 // echo "anterior: " . count($nombre_objetivos_anterior) . " actual: " . count($objetivos);
 $alcances = $_POST["alcances"];
 $restricciones = $_POST["restricciones"];
@@ -41,101 +42,116 @@ while($alc = pg_fetch_array($result_consulta_alc)){
 while($res = pg_fetch_array($result_consulta_res)){
   $restricciones_anteriores[] = $res["desc_restriccion"];
 }
-// ===================================================
-// ===================================================
-// ===================================================
-// ===================================================
 
 $nueva_cuenta_objetivos = 0;
-if (count($objetivos_anteriores) <= count($objetivos)) {
-  $query_proyecto = "update plan_proyecto set id_carpeta = ". $id_carpeta .", nombre_proyecto = '". $titulo_proyecto ."' where id_pp = " . $id_pp["id_pp"];
-  if (!pg_query($conn, $query_proyecto)) {
-    echo "no se pudo actualizar el proyecto";
-  }else{
-    $nueva_cuenta_objetivos = count($objetivos) - count($objetivos_anteriores);
-    // echo count($objetivos) ." -- ". (count($objetivos_anteriores));
-    // var_dump($objetivos_anteriores);
-    // var_dump($objetivos);
-    if ($nueva_cuenta_objetivos == 0) {
-      for ($i=0; $i < count($objetivos_anteriores) ; $i++) {
-        $query_actualiza_objetivos = "update objetivos set desc_objetivo = '" . $objetivos[$i] . "' where desc_objetivo='" . $objetivos_anteriores[$i] . "'";
-        if (!pg_query($conn, $query_actualiza_objetivos)) {
-          echo "No se pudo actualizar el objetivo";
-        }
-      }
-      echo "Objetivos actualizados";
-    }else{
-      if ($nueva_cuenta_objetivos > 0) {
-        for ($i=0; $i < count($objetivos_anteriores) ; $i++) {
-          $query_actualiza_objetivos = "update objetivos set desc_objetivo = '" . $objetivos[$i] . "' where desc_objetivo='" . $objetivos_anteriores[$i] . "'";
-          if (!pg_query($conn, $query_actualiza_objetivos)) {
-            echo "No se pudo actualizar el objetivo";
-          }
-        }
-        for ($i=count($objetivos_anteriores); $i < count($objetivos) ; $i++) {
-          $query_nuevos_objetivos = "insert into objetivos (desc_objetivo,id_pp_fk) values ('". $objetivos[$i] ."', ". $id_pp["id_pp"] .")";
-          if (!pg_query($conn, $query_nuevos_objetivos)) {
-            echo "No se agregaron los nuevos objetivos";
-          }
-        }
-        echo "Objetivos actualizados";
-      }
-    }
-  }
+$nueva_cuenta_alcances = 0;
+$nueva_cuenta_restricciones = 0;
+
+$query_proyecto = "update plan_proyecto set id_carpeta = ". $id_carpeta .", nombre_proyecto = '". $titulo_proyecto ."' where id_pp = " . $id_pp["id_pp"];
+if (!pg_query($conn, $query_proyecto)) {
+  echo "no se pudo actualizar el proyecto";
 }else{
-  $nueva_cuenta_objetivos = count($objetivos_anteriores) - count($objetivos);
-  echo "Nueva cuenta objetivos: " . $nueva_cuenta_objetivos;
-  // echo "No se puede proceder";
-}
-
-// for ($i=0; $i < count(); $i++) {
-//   // code...
-// }
-//
-//
-// $query_proyecto = "update plan_proyecto set id_carpeta = ". $id_carpeta .", nombre_proyecto = '". $titulo_proyecto ."' where id_pp = " . $id_pp["id_pp"];
-//
-//
-// if (!pg_query($conn, $query_proyecto)) {
-//   echo "no se pudo actualizar el proyecto";
-// }else{
-//   // ===========OBJETIVOS==============
-//   if (count($nombre_objetivos_anterior)>0) {
-//     $numero_objetivos_anterior = count($nombre_objetivos_anterior);
-//     $numero_objetivos = count($objetivos);
-//     $restaObjetivos = ($numero_objetivos - $numero_objetivos_anterior);
-//     echo $numero_objetivos . " - " . $numero_objetivos_anterior . " = " . $restaObjetivos;
-//   }
-
-  //
-  // for ($i=0; $i < count($nombre_objetivos_anterior); $i++) {
-  //   $query_objetivos = "update objetivos set desc_objetivo = '". $objetivos[$i] ."' where desc_objetivo = '". $nombre_objetivos_anterior[$i] ."'";
-    // if (!pg_query($conn, $query_objetivos)) {
-    //   echo "No se pudo actualizar el objetivo";
-    // }
-  // }
-  // if ($restaObjetivos > 0) {
-  //   for ($i=1; $i <= $restaObjetivos; $i++) {
-  //     $query_insertar_objetivos = "insert into objetivos (id_pp_fk,desc_objetivo) values (". $id_pp["id_pp"] .",'". $objetivos[$i] ."')";
-  //     if (!pg_query($conn, $query_insertar_objetivos)) {
-  //       echo "No se guardo el nuevo objetivo";
+  // ===================================================
+  // ====================ACTUALIZAR OBJETIVOS====================
+  // if (count($objetivos_anteriores) <= count($objetivos)) {
+  //   $nueva_cuenta_objetivos = count($objetivos) - count($objetivos_anteriores);
+  //   if ($nueva_cuenta_objetivos == 0) {
+  //     for ($i=0; $i < count($objetivos_anteriores) ; $i++) {
+  //       $query_actualiza_objetivos = "update objetivos set desc_objetivo = '" . $objetivos[$i] . "' where desc_objetivo='" . $objetivos_anteriores[$i] . "'";
+  //       if (!pg_query($conn, $query_actualiza_objetivos)) {
+  //         echo "No se pudo actualizar el objetivo";
+  //       }
+  //     }
+  //     echo "Objetivos actualizados";
+  //   }else{
+  //     if ($nueva_cuenta_objetivos > 0) {
+  //       for ($i=0; $i < count($objetivos_anteriores) ; $i++) {
+  //         $query_actualiza_objetivos = "update objetivos set desc_objetivo = '" . $objetivos[$i] . "' where desc_objetivo='" . $objetivos_anteriores[$i] . "'";
+  //         if (!pg_query($conn, $query_actualiza_objetivos)) {
+  //           echo "No se pudo actualizar el objetivo";
+  //         }
+  //       }
+  //       for ($i=count($objetivos_anteriores); $i < count($objetivos) ; $i++) {
+  //         $query_nuevos_objetivos = "insert into objetivos (desc_objetivo,id_pp_fk) values ('". $objetivos[$i] ."', ". $id_pp["id_pp"] .")";
+  //         if (!pg_query($conn, $query_nuevos_objetivos)) {
+  //           echo "No se agregaron los nuevos objetivos";
+  //         }
+  //       }
+  //       echo "Objetivos actualizados";
   //     }
   //   }
   // }
-  // for ($i=0; $i <count($alcances) ; $i++) {
-  //   $query_alcances = "update alcances set desc_alcances = '". $alcances[$i] ."' where id_pp_fk = ".$id_pp["id_pp"];
-  //   if (!pg_query($conn, $query_alcances)) {
-  //     echo "No se pudo actualizar el alcance";
+  // else{
+  //   $diff_objetivos_eliminar = array_diff($objetivos_anteriores, $objetivos);
+  //   foreach ($diff_objetivos_eliminar as $objetivo_eliminar) {
+  //     $query_elimina_objetivo = "delete from objetivos where desc_objetivo = '" . $objetivo_eliminar . "'";
+  //     if (!pg_query($query_elimina_objetivo)) {
+  //       echo "No se elimino el objetivo: " . $objetivo_eliminar;
+  //       break;
+  //     }else{
+  //         echo "Objetivos actualizados";
+  //     }
   //   }
   // }
-  // for ($i=0; $i < count($restricciones); $i++) {
-  //   $query_restricciones = "update restricciones set desc_restriccion = '". $restricciones[$i] ."' where id_pp_fk = ".$id_pp["id_pp"];
-  //   if (!pg_query($conn, $query_restricciones)) {
-  //     echo "No se pudo actualizar la restriccion";
-  //   }
-  // }
+  // =========================================================
+  // ====================ACTUALIZAR ALCANCES====================
 
-  //aqui van los alcances (Prcticamente igual que en los objetivos.. vamonos a dormir .-.zzz)
-  // echo "Se actualizo el proyecto";
+  if (count($alcances_anteriores) <= count($alcances)) {
+    $nueva_cuenta_alcances = count($alcances) - count($alcances_anteriores);
+    if ($nueva_cuenta_alcances == 0) {
+      for ($i=0; $i < count($alcances_anteriores) ; $i++) {
+        $query_actualiza_alcances = "update alcances set desc_alcances = '" . $alcances[$i] . "' where desc_alcances='" . $alcances_anteriores[$i] . "'";
+        if (!pg_query($conn, $query_actualiza_alcances)) {
+          echo "No se pudo actualizar el alcance";
+        }
+      }
+      echo "alcances actualizados";
+    }else{
+      if ($nueva_cuenta_alcances > 0) {
+        for ($i=0; $i < count($alcances_anteriores) ; $i++) {
+          $query_actualiza_alcances = "update alcances set desc_alcances = '" . $alcances[$i] . "' where desc_alcances='" . $alcances_anteriores[$i] . "'";
+          if (!pg_query($conn, $query_actualiza_alcances)) {
+            echo "No se pudo actualizar el alcance";
+            break;
+          }
+        }
+        for ($i=count($alcances_anteriores); $i < count($alcances) ; $i++) {
+          $query_nuevos_alcances = "insert into alcances (desc_alcances,id_pp_fk) values ('". $alcances[$i] ."', ". $id_pp["id_pp"] .")";
+          if (!pg_query($conn, $query_nuevos_alcances)) {
+            echo "No se agregaron los nuevos alcances";
+          }
+        }
+        echo "alcances actualizados";
+      }
+    }
+  }else{
+    // $nueva_cuenta_alcances = count($alcances_anteriores) - count($alcances);
+    // for ($i=0; $i < count($alcances) ; $i++) {
+    //   $query_actualiza_alcances = "update alcances set desc_alcances = '" . $alcances[$i] . "' where desc_alcances='" . $alcances_anteriores[$i] . "'";
+    //   if (!pg_query($conn, $query_actualiza_alcances)) {
+    //     echo "No se pudo actualizar el alcance";
+    //     break;
+    //   }else{
+    //     if (strcmp($alcances[$i],'') == 0) {
+    //       echo "Se elimina";
+    //     }
+    //   }
+    // }
+    // $diff_alcances_eliminar = array_diff($alcances_anteriores, $alcances);
+    // foreach ($diff_alcances_eliminar as $alcance_eliminar) {
+    //   echo $alcance_eliminar . "\n";
+      // $query_elimina_alcance = "delete from alcances where desc_alcances = '" . $alcance_eliminar . "'";
+      // if (!pg_query($query_elimina_alcance)) {
+      //   echo "No se elimino el alcance: " . $alcance_eliminar;
+      //   break;
+      // }else{
+      //     echo "alcances actualizados";
+      // }
+    // }
+  }
+  // =========================================================
+  // ====================ACTUALIZAR RESTRICCIONES====================
 
-// }
+
+  // =========================================================
+}
