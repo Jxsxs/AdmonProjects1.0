@@ -74,7 +74,7 @@
                     <div class="row " id="contNombre">
                       <div class="col-md-12">
                           <div class="well well-md">
-                              <form class="form-horizontal" method="post">
+                              <form class="form-horizontal" method="post" id="">
                                   <fieldset>
                                     <legend class="text-center header">Proyecto</legend>
                                     <div class="form-group ">

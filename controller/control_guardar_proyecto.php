@@ -1,5 +1,6 @@
 <?php
 include '../database/conn.php';
+header("Content-Type: application/json;");
 
 $titulo_proyecto = $_POST["titulo_proyecto"];
 $objetivos = $_POST["objetivos"];
@@ -16,7 +17,11 @@ if (!pg_query($conn, $query_proyecto)) {
   $query_pp = "select id_pp from plan_proyecto where nombre_proyecto='" . $titulo_proyecto ."'";
   $result_query_pp = pg_query($conn, $query_pp) or die("Error en la consulta");
   $id_pp = pg_fetch_assoc($result_query_pp);
+  session_start();
+  $id_plan = $id_pp["id_pp"];
+  $_SESSION['id_pp'] = $id_plan;
   // echo $objetivos[0];
+
   for ($i=0; $i < count($objetivos); $i++) {
     $query_objetivos = "insert into objetivos (id_pp_fk, desc_objetivo) values(".$id_pp["id_pp"].", '".$objetivos[$i]."')";
     if (!pg_query($conn, $query_objetivos)) {
@@ -35,5 +40,8 @@ if (!pg_query($conn, $query_proyecto)) {
       echo "No se pudo agregar la restriccion";
     }
   }
-  echo "Se guardo el proyecto";
+
+  echo json_encode(Array(
+    'id_plan' => $id_plan
+  ));
 }

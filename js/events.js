@@ -1,5 +1,7 @@
 // JavaScript Document
 $(window).on("load",function(){
+  // $('#tablaPuntosFuncion').DataTable();
+  crearElementosProyecto("Nuevo Proyecto");
   var datos = {
     "pasa":"pasa"
   };
@@ -47,6 +49,24 @@ $(window).on("load",function(){
             $("#datos").html("Error: no se realizó la operación ");
     }
   });
+
+});
+
+$(document).ready(function() {
+    $('#sidebarCollapse').on('click', function() {
+        $('#sidebar').toggleClass('active');
+    });
+});
+// function pruebaMostrar(){
+//   document.getElementById("noBien").style.display = "block";
+//   document.getElementById("siBien").style.display = "none";
+//
+// }
+
+function cargarSelectCarpeta(){
+  var datos = {
+    "pasa":"pasa"
+  };
   $.ajax({
     data:datos,
     url : "../controller/control_select_carpeta.php",
@@ -64,18 +84,172 @@ $(window).on("load",function(){
       $("#datos").html("Error: no se realizó la operación ");
     }
   });
-});
+}
 
-$(document).ready(function() {
-    $('#sidebarCollapse').on('click', function() {
-        $('#sidebar').toggleClass('active');
-    });
-});
-// function pruebaMostrar(){
-//   document.getElementById("noBien").style.display = "block";
-//   document.getElementById("siBien").style.display = "none";
-//
-// }
+function crearElementosProyecto(titulo){
+  crearCardHeader(titulo);
+  crearCardBody();
+  crearDivTitulo();
+  crearDivObjetivos();
+  crearDivAlcances();
+  crearDivRestricciones();
+  crearDivSelectCarpeta();
+  crearDivBotonesProyecto();
+}
+
+function crearCardBody(){
+  var divCardBody = document.createElement("div");
+  divCardBody.className = "card-body";
+  divCardBody.id = "divTodo";
+  document.getElementById("cardTodo").appendChild(divCardBody);
+  var formTodo = document.createElement("form");
+  formTodo.className = "form";
+  formTodo.role = "form";
+  formTodo.autocomplete = "off";
+  formTodo.id = "formTodo";
+  document.getElementById("divTodo").appendChild(formTodo);
+}
+
+function crearCardHeader(titulo){
+  var divCardHeader = document.createElement("div");
+  divCardHeader.className = "card-header";
+  divCardHeader.id = "header";
+  divCardHeader.innerHTML = '<h3 class="mb-0" style="text-align:center;" id="titulo">' + titulo + '</h3>';
+  document.getElementById("cardTodo").appendChild(divCardHeader);
+}
+
+function crearHrFormTodo(div){
+  var hr = document.createElement("hr");
+  document.getElementById(div).appendChild(hr);
+}
+
+function crearDivTitulo(){
+  var divTitulo = document.createElement("div");
+  divTitulo.id = "divTitulo";
+  divTitulo.className = "form-group row";
+  divTitulo.innerHTML = '<label class="col-lg-3 col-form-label form-control-label">Titulo</label>';
+  document.getElementById("formTodo").appendChild(divTitulo);
+  var divInputTitulo = document.createElement("div");
+  divInputTitulo.className = "col-lg-9";
+  divInputTitulo.id = "verProyecto";
+  divInputTitulo.innerHTML = '<input class="form-control" type="text" required value="" id="txtTitulo">';
+  document.getElementById("divTitulo").appendChild(divInputTitulo);
+  crearHrFormTodo("divTitulo");
+
+}
+
+function crearDivObjetivos(){
+  var divObjetivos = document.createElement("div");
+  divObjetivos.id = "divObjetivos";
+  divObjetivos.className = "form-group row";
+  divObjetivos.innerHTML = '<label class="col-lg-3 col-form-label form-control-label">Objetivos</label>';
+  document.getElementById("formTodo").appendChild(divObjetivos);
+  var divInputObjetivos = document.createElement("div");
+  divInputObjetivos.id = "objetivos";
+  divInputObjetivos.className = "col-lg-9";
+  // for (var i = 0; i < 3; i++) {
+  divInputObjetivos.innerHTML = '<input class="form-control" type="text" required id="txtObjetivo_1"><br>'+
+                                '<input class="form-control" type="text" required id="txtObjetivo_2"><br>'+
+                                '<input class="form-control" type="text" required id="txtObjetivo_3"><br>';
+  document.getElementById("divObjetivos").appendChild(divInputObjetivos);
+  // }
+
+  var divMasObjetivos = document.createElement("div");
+  divMasObjetivos.className = "col-lg-12";
+  divMasObjetivos.innerHTML = '<p class="text-right" style="color:blue;" onclick="crearObjetivo();" id="masObjetivos">More</p>';
+
+  document.getElementById("divObjetivos").appendChild(divMasObjetivos);
+  crearHrFormTodo("divObjetivos");
+
+
+}
+
+function crearDivAlcances(){
+  var divAlcances = document.createElement("div");
+  divAlcances.id = "divAlcances";
+  divAlcances.className = "form-group row";
+  divAlcances.innerHTML = '<label class="col-lg-3 col-form-label form-control-label">Alcances</label>';
+  document.getElementById("formTodo").appendChild(divAlcances);
+  var divInputAlcances = document.createElement("div");
+  divInputAlcances.id = "alcances";
+  divInputAlcances.className = "col-lg-9";
+  divInputAlcances.innerHTML = '<input class="form-control" type="text" required id="txtAlcance_1"><br>'+
+                                '<input class="form-control" type="text" required id="txtAlcance_2"><br>'+
+                                '<input class="form-control" type="text" required id="txtAlcance_3"><br>';
+  document.getElementById("divAlcances").appendChild(divInputAlcances);
+
+  var divMasAlcances =  document.createElement("div");
+  divMasAlcances.className = "col-lg-12";
+  divMasAlcances.innerHTML = '<p class="text-right" style="color:blue;" onclick="crearAlcance();" id="masAlcances">More</p>';
+
+  document.getElementById("divAlcances").appendChild(divMasAlcances);
+  crearHrFormTodo("divAlcances");
+
+}
+
+function crearDivRestricciones(){
+  var divRestricciones = document.createElement("div");
+  divRestricciones.id = "divRestricciones";
+  divRestricciones.className = "form-group row";
+  divRestricciones.innerHTML = '<label class="col-lg-3 col-form-label form-control-label">Restricciones</label>';
+  document.getElementById("formTodo").appendChild(divRestricciones);
+  var divInputRestricciones = document.createElement("div");
+  divInputRestricciones.id = "restricciones";
+  divInputRestricciones.className = "col-lg-9";
+  for (var i = 0; i < 3; i++) {
+    divInputRestricciones.innerHTML = '<input class="form-control" type="text" required id="txtRes_1"><br>'+
+                                      '<input class="form-control" type="text" required id="txtRes_2"><br>'+
+                                      '<input class="form-control" type="text" required id="txtRes_3"><br>';
+    document.getElementById("divRestricciones").appendChild(divInputRestricciones);
+  }
+
+  var divMasRestricciones = document.createElement("div");
+  divMasRestricciones.className = "col-lg-12";
+  divMasRestricciones.innerHTML = '<p class="text-right" style="color:blue;" onclick="crearRestriccion();" id="masRestricciones">More</p>';
+
+  document.getElementById("divRestricciones").appendChild(divMasRestricciones);
+  crearHrFormTodo("divRestricciones");
+}
+
+function crearDivSelectCarpeta(){
+  var divSelectCarpeta = document.createElement("div");
+  divSelectCarpeta.id = "div_select";
+  divSelectCarpeta.className = "form-group row";
+  divSelectCarpeta.innerHTML = '<label class="col-lg-3 col-form-label form-control-label">Carpeta</label>';
+  document.getElementById("formTodo").appendChild(divSelectCarpeta);
+  var divSelect = document.createElement("div");
+  divSelect.className = "col-lg-9";
+  divSelect.innerHTML = '<select id="select_carpeta" class="form-control" required>'+
+                          '<option value = "" selected>==Seleccione Una==</option>'+
+                        '</select>';
+
+  document.getElementById("div_select").appendChild(divSelect);
+  crearHrFormTodo("div_select");
+  cargarSelectCarpeta();
+}
+
+function crearDivBotonesProyecto(){
+  var divContenidoBotones = document.createElement("div");
+  divContenidoBotones.id = "divBotones";
+  divContenidoBotones.className = "form-group row";
+  divContenidoBotones.innerHTML = '<label class="col-lg-8 col-form-label form-control-label"></label>';
+  document.getElementById("formTodo").appendChild(divContenidoBotones);
+  var divBotones = document.createElement("div");
+  divBotones.className = "col-lg-4 text-right";
+  divBotones.innerHTML = '<input type="reset" class="btn btn-secondary" id="btnCancelar" style="display:none;" onclick="cancelar();" value="Cancel">'+
+                          '<!-- <input type="button" class="btn btn-primary" value="Continuar" id="btnGuardar" onclick="guardarProyecto();"> -->'+
+                          '<input type="button" class="btn btn-primary" value="Continuar" id="btnContinuar" onclick="guardarProyecto();">'+
+                          '<input type="button" class="btn btn-primary" value="Edit" id="btnEdit" style="display:none;" onclick="editarProyecto();">'+
+                          '<input type="button" class="btn btn-primary" value="Actualizar" id="btnActualizar" style="display:none;" onclick="actualizarProyecto();">'+
+                          '<!-- <input type="button" class="btn btn-primary" value="Continuar" id="btnContinuar" style="display:none;" onclick=""> -->';
+  document.getElementById("divBotones").appendChild(divBotones);
+
+  var divDatos = document.createElement("div");
+  divDatos.id = "datos";
+  document.getElementById("divBotones").appendChild(divDatos);
+
+}
+
 function nuevoProyecto(){
   if (banderaEditar) {
     var confirmacion = confirm("Dejar de EDITAR?");
@@ -84,7 +258,7 @@ function nuevoProyecto(){
       document.getElementById("btnEdit").style.display = "none";
       document.getElementById("btnCancelar").style.display = "none";
       document.getElementById("btnActualizar").style.display = "none";
-      document.getElementById("btnGuardar").style.display = "";
+      // document.getElementById("btnGuardar").style.display = "";
       document.getElementById("masObjetivos").style.display = "";
       document.getElementById("masAlcances").style.display = "";
       document.getElementById("masRestricciones").style.display = "";
@@ -104,7 +278,7 @@ function nuevoProyecto(){
     document.getElementById("btnEdit").style.display = "none";
     document.getElementById("btnCancelar").style.display = "none";
     document.getElementById("btnActualizar").style.display = "none";
-    document.getElementById("btnGuardar").style.display = "";
+    // document.getElementById("btnGuardar").style.display = "";
     document.getElementById("masObjetivos").style.display = "";
     document.getElementById("masAlcances").style.display = "";
     document.getElementById("masRestricciones").style.display = "";
@@ -176,55 +350,7 @@ function guardarCarpeta(){
   }
 }
 
-function guardarProyecto(){
-  var titulo_proyecto = document.getElementById("txtTitulo").value;
-  var contObjetivos = document.getElementById('objetivos').getElementsByTagName('input').length;
-  var contAlcances = document.getElementById('alcances').getElementsByTagName('input').length;
-  var contRes = document.getElementById('restricciones').getElementsByTagName('input').length;
-  var objetivos = [];
-  var alcances = [];
-  var restricciones = [];
-  if (document.getElementById("select_carpeta").value != "") {
-    var id_carpeta = document.getElementById("select_carpeta").value;
-    // console.log(id_carpeta);
-  }
-  for (var i = 1; i <= contObjetivos; i++) {
-    if (document.getElementById("txtObjetivo_" + i).value != "") {
-      objetivos.push(document.getElementById("txtObjetivo_" + i).value);
-    }
-  }
-  for (var i = 1; i <= contAlcances; i++) {
-    if (document.getElementById("txtAlcance_" + i).value != "") {
-      alcances.push(document.getElementById("txtAlcance_" + i).value);
-    }
-  }
-  for (var i = 1; i <= contRes; i++) {
-    if (document.getElementById("txtRes_" + i).value != "") {
-      restricciones.push(document.getElementById("txtRes_" + i).value);
-    }
-  }
 
-  var datos = {
-    "titulo_proyecto":titulo_proyecto,
-    "objetivos":objetivos,
-    "alcances":alcances,
-    "restricciones":restricciones,
-    "id_carpeta":id_carpeta
-  };
-  $.ajax({
-    data:datos,
-    url : "../controller/control_guardar_proyecto.php",
-    type: "POST",
-    success: function (response) {
-      alert(response);
-      // limpiaDivs();
-      location.reload();
-    },
-    error: function(){
-      alert("No se guardó el proyecto");
-    }
-  });
-}
 
 function actualizarProyecto(){
   var titulo_proyecto = document.getElementById("txtTitulo").value;
@@ -274,6 +400,7 @@ function actualizarProyecto(){
       // nombre_objetivos_anterior = [];
     },
     error: function(){
+      alert("No se pudo actualizar");
     }
   });
 }
@@ -368,6 +495,7 @@ var nombre_proyecto_anterior = null;
 var nombre_objetivos_anterior = [];
 var nombre_alcances_anterior = [];
 var nombre_restricciones_anterior = [];
+
 function verDatosProyecto(id_pp) {
     // document.getElementById("bienvenido").setAttribute("style", "display:none");
     if (banderaEditar) {
@@ -377,13 +505,16 @@ function verDatosProyecto(id_pp) {
         var datos = {
           "id_pp":id_pp
         };
+
         $.ajax({
           data:datos,
           url : "../controller/control_muestra_proyecto.php",
           type: "POST",
           success:  function (response) {
+            limpiarElementos();
+            crearElementosProyecto("Detalles de Proyecto");
             // alert(response);
-            document.getElementById("titulo").innerHTML = "Detalles de Proyecto";
+            // document.getElementById("titulo").innerHTML = "Detalles de Proyecto";
             verNombreProyecto(response.titulo_proyecto);
             verObjetivosProyecto(response.objetivos);
             verAlcancesProyecto(response.alcances);
@@ -391,7 +522,7 @@ function verDatosProyecto(id_pp) {
             document.getElementById("div_select").style.display = "none";
             document.getElementById("nuevo_proyecto").style.display = "";
             document.getElementById("btnEdit").style.display = "";
-            document.getElementById("btnGuardar").style.display = "none";
+            // document.getElementById("btnGuardar").style.display = "none";
             document.getElementById("btnActualizar").style.display = "none";
             document.getElementById("btnCancelar").style.display = "none";
           },
@@ -409,8 +540,10 @@ function verDatosProyecto(id_pp) {
         url : "../controller/control_muestra_proyecto.php",
         type: "POST",
         success:  function (response) {
+          limpiarElementos();
+          crearElementosProyecto("Detalles de Proyecto");
           // alert(response);
-          document.getElementById("titulo").innerHTML = "Detalles de Proyecto";
+          // document.getElementById("titulo").innerHTML = "Detalles de Proyecto";
           verNombreProyecto(response.titulo_proyecto);
           verObjetivosProyecto(response.objetivos);
           verAlcancesProyecto(response.alcances);
@@ -418,7 +551,7 @@ function verDatosProyecto(id_pp) {
           document.getElementById("div_select").style.display = "none";
           document.getElementById("nuevo_proyecto").style.display = "";
           document.getElementById("btnEdit").style.display = "";
-          document.getElementById("btnGuardar").style.display = "none";
+          // document.getElementById("btnGuardar").style.display = "none";
           document.getElementById("btnActualizar").style.display = "none";
           document.getElementById("btnCancelar").style.display = "none";
         },
@@ -434,7 +567,28 @@ function verDatosProyecto(id_pp) {
 }
 //======================================================================================
 // funcion que muestra el nombre del proyecto obtiene su id
-function verNombreProyecto(nombre_proyecto) {
+function verNombreProyecto(nombre_proyecto){
+  var divRes = document.getElementById("verProyecto");
+  // document.getElementById("etiquetaMenosRes").setAttribute("style","display:none;");
+  if (divRes != null) {
+      while (divRes.hasChildNodes()) {
+          divRes.removeChild(divRes.lastChild);
+      }
+  }
+  var titulo = document.createElement('input');
+  var br = document.createElement('br');
+  titulo.className = "form-control";
+  titulo.id = "txtTitulo";
+  titulo.name = "txtTitulo";
+  titulo.required = true;
+  titulo.disabled = true;
+  titulo.type = "text";
+  titulo.value = nombre_proyecto;
+  document.getElementById('verProyecto').appendChild(titulo);
+  document.getElementById("verProyecto").appendChild(br);
+}
+
+function verNombreProyecto2(nombre_proyecto) {
     var txtTitulo = document.getElementById("txtTitulo");
     txtTitulo.value = nombre_proyecto;
     txtTitulo.disabled = true;
